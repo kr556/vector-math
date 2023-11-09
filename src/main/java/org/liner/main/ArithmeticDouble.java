@@ -1,6 +1,6 @@
 package org.liner.main;
 
-public interface ArithmeticDouble<V extends VMLinearNumber<Double, V>> extends Arithmetic<V> {
+public interface ArithmeticDouble<V extends Linear<Double, V>> extends Arithmetic<V> {
     V add(double value);
     V add(double value, V pointer);
     V sub(double value);

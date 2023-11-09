@@ -2,7 +2,7 @@ package org.liner.main.matrix;
 
 import org.jetbrains.annotations.NotNull;
 import org.liner.main.Array;
-import org.liner.main.VMLinearNumber;
+import org.liner.main.Linear;
 import org.liner.main.vector.*;
 
 import java.nio.Buffer;
@@ -13,7 +13,7 @@ import java.nio.Buffer;
  * @param <TRNS> Transposed matrix type.
  */
 public sealed interface Matrix<E extends Number, V extends Matrix<E, V, TRNS> & Array<E>, TRNS extends Matrix<E, TRNS, V> & Array<E>>
-        extends VMLinearNumber<E, V>, MatrixFunctions<V, TRNS>
+        extends Linear<E, V>, MatrixFunctions<V, TRNS>
         permits AbsMatrix, MScalar, NonVextorMatrix {
     int rowsSize();
     int columnsSize();

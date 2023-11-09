@@ -52,22 +52,22 @@ public class Test extends MatrixUtil{
         int len = 100;
         int tLen = 10_000;
 
-        int[] n = new int[]{0};
-        String from = "インスタンスメソッド, 静的メソッド & ジェネリクス, 静的メソッド & 型指定\n";
-        from += Arrays.toString(IntStream.range(0, len)
-                        .parallel()
-                        .mapToObj(i -> {
-                            synchronized (n) {
-                                System.out.println(n[0]++);
-                            }
-                            return (timeA(tLen, m, v) / 10E8) + "," + (timeB(tLen, m, v) / 10E8) + "," + (timeC(tLen, m, v) / 10E8) + "\n";
-                        })
-                        .toArray())
-                .replace("[", "")
-                .replace("]", "")
-                .replace(", ", "");
-
-        log(from, LocalDateTime.now().toString().replace(":", "") + "-el=" + len);
+//        int[] n = new int[]{0};
+//        String from = "インスタンスメソッド, 静的メソッド & ジェネリクス, 静的メソッド & 型指定\n";
+//        from += Arrays.toString(IntStream.range(0, len)
+//                        .parallel()
+//                        .mapToObj(i -> {
+//                            synchronized (n) {
+//                                System.out.println(n[0]++);
+//                            }
+//                            return (timeA(tLen, m, v) / 10E8) + "," + (timeB(tLen, m, v) / 10E8) + "," + (timeC(tLen, m, v) / 10E8) + "\n";
+//                        })
+//                        .toArray())
+//                .replace("[", "")
+//                .replace("]", "")
+//                .replace(", ", "");
+//
+//        log(from, LocalDateTime.now().toString().replace(":", "") + "-el=" + len);
     }
 
     static long timeA(int len, Matrix4f m, Vector4f v) {
