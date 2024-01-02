@@ -53,7 +53,7 @@ public class Vector3d extends AbsVector<Double, Vector3d> implements DoubleVecto
 
     @Override
     public final boolean isNaN() {
-        return equals(NAN);
+        return Double.isNaN(x) && Double.isNaN(y) && Double.isNaN(z);
     }
 
     @Override

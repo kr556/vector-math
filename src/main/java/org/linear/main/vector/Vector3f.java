@@ -53,7 +53,7 @@ public class Vector3f extends AbsVector<Float, Vector3f> implements FloatVector<
 
     @Override
     public final boolean isNaN() {
-        return equals(NAN);
+        return Float.isNaN(x) && Float.isNaN(y) && Float.isNaN(z);
     }
 
     @Override

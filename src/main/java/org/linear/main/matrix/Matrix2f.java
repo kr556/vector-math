@@ -196,7 +196,8 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
 
     @Override
     public final boolean isNaN() {
-        return equals(NAN);
+        return Float.isNaN(m00) && Float.isNaN(m01) &&
+               Float.isNaN(m10) && Float.isNaN(m11);
     }
 
     @Override

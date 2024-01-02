@@ -198,7 +198,8 @@ public class Matrix2d extends SquareMatrix<Double, Matrix2d>
 
     @Override
     public final boolean isNaN() {
-        return equals(NAN);
+        return Double.isNaN(m00) && Double.isNaN(m01) &&
+               Double.isNaN(m10) && Double.isNaN(m11);
     }
 
     @Override

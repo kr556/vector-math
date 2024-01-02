@@ -4,6 +4,7 @@ import org.liner.annotation.PropertiesMethod;
 
 public abstract class AbsVector<E extends Number, V extends AbsVector<E, V>>
         implements Vector<E, V>, VectorFunctions<V> {
+    public AbsVector() {}
 
     @Override
     public String toString() {
@@ -26,7 +27,6 @@ public abstract class AbsVector<E extends Number, V extends AbsVector<E, V>>
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) return false;
         if (obj == this) return true;
         if (!(obj instanceof AbsVector<?,?>)) return false;
         return this.equals((V)obj);

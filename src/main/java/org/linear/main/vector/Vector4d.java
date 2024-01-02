@@ -57,7 +57,7 @@ public class Vector4d extends AbsVector<Double, Vector4d> implements DoubleVecto
 
     @Override
     public final boolean isNaN() {
-        return equals(NAN);
+        return Double.isNaN(x) && Double.isNaN(y) && Double.isNaN(z) && Double.isNaN(w);
     }
 
     @Override

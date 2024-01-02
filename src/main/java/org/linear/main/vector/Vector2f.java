@@ -50,7 +50,7 @@ public class Vector2f extends AbsVector<Float, Vector2f> implements FloatVector<
 
     @Override
     public final boolean isNaN() {
-        return equals(NAN);
+        return Float.isNaN(x) && Float.isNaN(y);
     }
 
     @Override

@@ -261,7 +261,9 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
 
     @Override
     public final boolean isNaN() {
-        return equals(NAN);
+        return Float.isNaN(m00) && Float.isNaN(m01) && Float.isNaN(m02) &&
+               Float.isNaN(m10) && Float.isNaN(m11) && Float.isNaN(m12) &&
+               Float.isNaN(m20) && Float.isNaN(m21) && Float.isNaN(m22);
     }
 
     @Override

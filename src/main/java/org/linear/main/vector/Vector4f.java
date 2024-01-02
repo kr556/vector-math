@@ -10,7 +10,7 @@ import static java.lang.Math.*;
 public class Vector4f extends AbsVector<Float, Vector4f> implements FloatVector<Vector4f> {
     public float x, y, z, w;
 
-    public final Vector4f NAN = new Vector4f(Float.NaN, Float.NaN, Float.NaN, Float.NaN);
+    public static final Vector4f NAN = new Vector4f(Float.NaN, Float.NaN, Float.NaN, Float.NaN);
 
     public Vector4f() {}
 
@@ -57,7 +57,7 @@ public class Vector4f extends AbsVector<Float, Vector4f> implements FloatVector<
 
     @Override
     public final boolean isNaN() {
-        return equals(NAN);
+        return Float.isNaN(x) && Float.isNaN(y) && Float.isNaN(z) && Float.isNaN(w);
     }
 
     @Override

@@ -269,7 +269,10 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
 
     @Override
     public final boolean isNaN() {
-        return equals(NAN);
+        return Double.isNaN(m00) && Double.isNaN(m01) && Double.isNaN(m02) && Double.isNaN(m03) &&
+               Double.isNaN(m10) && Double.isNaN(m11) && Double.isNaN(m12) && Double.isNaN(m13) &&
+               Double.isNaN(m20) && Double.isNaN(m21) && Double.isNaN(m22) && Double.isNaN(m23) &&
+               Double.isNaN(m30) && Double.isNaN(m31) && Double.isNaN(m32) && Double.isNaN(m33);
     }
 
     @Override
