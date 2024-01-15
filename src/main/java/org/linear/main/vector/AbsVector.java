@@ -19,6 +19,8 @@ public abstract class AbsVector<E extends Number, V extends AbsVector<E, V>>
         return re + "}";
     }
 
+    public abstract V clone();
+
     @PropertiesMethod
     @Override
     public final boolean isScalar() {

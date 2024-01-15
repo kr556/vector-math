@@ -49,7 +49,7 @@ public class Matrix2d extends SquareMatrix<Double, Matrix2d>
     }
 
     @Override
-    public Matrix2d copy() {
+    public Matrix2d clone() {
         return new Matrix2d(this);
     }
 

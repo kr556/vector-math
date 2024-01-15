@@ -315,7 +315,7 @@ public class Vectornf extends AbsVector<Float, Vectornf> implements FloatVector<
     }
 
     @Override
-    public Vectornf copy() {
+    public Vectornf clone() {
         return new Vectornf(v);
     }
 

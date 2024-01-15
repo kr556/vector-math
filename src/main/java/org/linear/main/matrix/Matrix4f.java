@@ -64,7 +64,7 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
     }
 
     @Override
-    public final Matrix4f copy() {
+    public final Matrix4f clone() {
         return new Matrix4f(this);
     }
 

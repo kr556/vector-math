@@ -70,7 +70,7 @@ public class Matrix3d extends SquareMatrix<Double, Matrix3d>
     }
 
     @Override
-    public Matrix3d copy() {
+    public Matrix3d clone() {
         return new Matrix3d(this);
     }
 
@@ -225,7 +225,7 @@ public class Matrix3d extends SquareMatrix<Double, Matrix3d>
 
     @Override
     public Matrix3d div(Matrix3d value) {
-        return this.mul(value.copy().invert());
+        return this.mul(value.clone().invert());
     }
 
     @Override

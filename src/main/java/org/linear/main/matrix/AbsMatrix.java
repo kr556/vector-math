@@ -19,6 +19,8 @@ public abstract class AbsMatrix<E extends Number, V extends Matrix<E, V, TRNS>, 
         }
     }
 
+    public abstract V clone();
+
     int posToIndex(int r, int c) {
         return r * rowDimension() + c;
     }

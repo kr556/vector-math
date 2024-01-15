@@ -238,7 +238,7 @@ public class Vector2i extends AbsVector<Integer, Vector2i> implements IntVector<
     }
 
     @Override
-    public Vector2i copy() {
+    public Vector2i clone() {
         return new Vector2i(this);
     }
 

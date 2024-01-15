@@ -6,23 +6,23 @@ public class MatrixUtil {
     protected MatrixUtil() {}
 
     public static Matrix2f diagonal2f() {
-        return Matrix2f.DIAGONAL.copy();
+        return Matrix2f.DIAGONAL.clone();
     }
 
     public static Matrix2d diagonal2d() {
-        return Matrix2d.DIAGONAL.copy();
+        return Matrix2d.DIAGONAL.clone();
     }
     public static Matrix3f diagonal3f() {
-        return Matrix3f.DIAGONAL.copy();
+        return Matrix3f.DIAGONAL.clone();
     }
     public static Matrix3d diagonal3d() {
-        return Matrix3d.DIAGONAL.copy();
+        return Matrix3d.DIAGONAL.clone();
     }
     public static Matrix4f diagonal4f() {
-        return Matrix4f.DIAGONAL.copy();
+        return Matrix4f.DIAGONAL.clone();
     }
     public static Matrix4d diagonal4d() {
-        return Matrix4d.DIAGONAL.copy();
+        return Matrix4d.DIAGONAL.clone();
     }
 
     public static Vector2f transformation(Matrix3f matrix, Vector2f vector) {
@@ -370,7 +370,7 @@ public class MatrixUtil {
         if (matrix instanceof SquareMatrix<?,?>) {
             if (matrix.rowDimension() == vector.dimension()) {
                 MAT mTmp = matrix.create();
-                MAT mAns = matrix.copy();
+                MAT mAns = matrix.clone();
 
                 mTmp.map((r, c) -> vector.get(r));
 
@@ -391,7 +391,7 @@ public class MatrixUtil {
         if (matrix instanceof SquareMatrix<?,?>) {
             if (matrix.rowDimension() - 1 == vector.dimension()) {
                 MAT mTmp = (matrix).create();
-                MAT mAns = (matrix).copy();
+                MAT mAns = (matrix).clone();
 
                 mTmp.map((r, c) -> vector.get(r));
 

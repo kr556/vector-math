@@ -71,7 +71,7 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
     }
 
     @Override
-    public Matrix3f copy() {
+    public Matrix3f clone() {
         return new Matrix3f(this);
     }
 
@@ -226,7 +226,7 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
 
     @Override
     public Matrix3f div(Matrix3f value) {
-        return this.mul(value.copy().invert());
+        return this.mul(value.clone().invert());
     }
 
     @Override

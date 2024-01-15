@@ -65,7 +65,7 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
     }
 
     @Override
-    public final Matrix4d copy() {
+    public final Matrix4d clone() {
         return new Matrix4d(this);
     }
 

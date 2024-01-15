@@ -238,7 +238,7 @@ public class Vector2l extends AbsVector<Long, Vector2l> implements LongVector<Ve
     }
 
     @Override
-    public Vector2l copy() {
+    public Vector2l clone() {
         return new Vector2l(this);
     }
 

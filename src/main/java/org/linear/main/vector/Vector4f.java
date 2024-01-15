@@ -274,7 +274,7 @@ public class Vector4f extends AbsVector<Float, Vector4f> implements FloatVector<
     }
 
     @Override
-    public Vector4f copy() {
+    public Vector4f clone() {
         return new Vector4f(this);
     }
 

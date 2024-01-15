@@ -312,7 +312,7 @@ public class Vectorni extends AbsVector<Integer, Vectorni> implements IntVector<
     }
 
     @Override
-    public Vectorni copy() {
+    public Vectorni clone() {
         return new Vectorni(this);
     }
 

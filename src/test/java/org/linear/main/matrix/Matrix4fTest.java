@@ -20,7 +20,7 @@ class Matrix4fTest {
                 0, 0, 0, 1
         );
 
-        assertEquals(m.add(1), m.copy());
+        assertEquals(m.add(1), m.clone());
     }
 
     @Test

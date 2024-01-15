@@ -274,7 +274,7 @@ public class Vector4d extends AbsVector<Double, Vector4d> implements DoubleVecto
     }
 
     @Override
-    public Vector4d copy() {
+    public Vector4d clone() {
         return new Vector4d(this);
     }
 

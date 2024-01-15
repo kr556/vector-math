@@ -244,7 +244,7 @@ public class Vector2f extends AbsVector<Float, Vector2f> implements FloatVector<
     }
 
     @Override
-    public Vector2f copy() {
+    public Vector2f clone() {
         return new Vector2f(this);
     }
 

@@ -312,7 +312,7 @@ public class Vectornl extends AbsVector<Long, Vectornl> implements LongVector<Ve
     }
 
     @Override
-    public Vectornl copy() {
+    public Vectornl clone() {
         return new Vectornl(v);
     }
 

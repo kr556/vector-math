@@ -261,7 +261,7 @@ public class Vector3d extends AbsVector<Double, Vector3d> implements DoubleVecto
     }
 
     @Override
-    public Vector3d copy() {
+    public Vector3d clone() {
         return new Vector3d(this);
     }
 

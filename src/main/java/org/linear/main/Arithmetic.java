@@ -16,7 +16,7 @@ public interface Arithmetic<E, V> {
      * Copy this.
      * @return Obj deep copied of this.
      */
-    V copy();
+    V clone();
 
     /**
      * Add elements of an argument to corresponding elements of myself. This method can calculation same size of elements.
@@ -108,7 +108,7 @@ public interface Arithmetic<E, V> {
      * @return anser
      */
     default V add(Arithmetic<E, V> value) {
-        return this.add(value.copy());
+        return this.add(value.clone());
     }
 
     /**
@@ -118,7 +118,7 @@ public interface Arithmetic<E, V> {
      * @return anser
      */
     default V add(Arithmetic<E, V> value, Arithmetic<E, V> pointer) {
-        pointer.set(this.copy());
+        pointer.set(this.clone());
 
         return pointer.add(value);
     }
@@ -130,7 +130,7 @@ public interface Arithmetic<E, V> {
      * @return anser
      */
     default V sub(Arithmetic<E, V> value) {
-        return this.sub(value.copy());
+        return this.sub(value.clone());
     }
 
     /**
@@ -140,7 +140,7 @@ public interface Arithmetic<E, V> {
      * @return anser
      */
     default V sub(Arithmetic<E, V> value, Arithmetic<E, V> pointer) {
-        pointer.set(this.copy());
+        pointer.set(this.clone());
 
         return pointer.sub(value);
     }
@@ -152,7 +152,7 @@ public interface Arithmetic<E, V> {
      * @return anser
      */
     default V mul(Arithmetic<E, V> value) {
-        return this.mul(value.copy());
+        return this.mul(value.clone());
     }
 
     /**
@@ -162,7 +162,7 @@ public interface Arithmetic<E, V> {
      * @return anser
      */
     default V mul(Arithmetic<E, V> value, Arithmetic<E, V> pointer) {
-        pointer.set(this.copy());
+        pointer.set(this.clone());
 
         return pointer.mul(value);
     }
@@ -174,7 +174,7 @@ public interface Arithmetic<E, V> {
      * @return anser
      */
     default V div(Arithmetic<E, V> value) {
-        return this.div(value.copy());
+        return this.div(value.clone());
     }
 
     /**
@@ -184,7 +184,7 @@ public interface Arithmetic<E, V> {
      * @return anser
      */
     default V div(Arithmetic<E, V> value, Arithmetic<E, V> pointer) {
-        pointer.set(this.copy());
+        pointer.set(this.clone());
 
         return pointer.div(value);
     }

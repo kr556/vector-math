@@ -35,8 +35,8 @@ public class test02 {
 
     public static void plot(Vector4f[] vs, Matrix4f world, Matrix4f... ms) {
         final Thread[] timer = new Thread[1];
-        Matrix4f ans = Matrix4f.DIAGONAL.copy();
-        Matrix4f viewport = Matrix4f.DIAGONAL.copy();
+        Matrix4f ans = Matrix4f.DIAGONAL.clone();
+        Matrix4f viewport = Matrix4f.DIAGONAL.clone();
         Vector4f[] ps = new Vector4f[vs.length];
         Vector4f[] axisXYZ = new Vector4f[]{ // model axis
                 new Vector4f(-axisLen,  0,          0,          1), new Vector4f(axisLen,   0,          0,          1),
@@ -136,15 +136,15 @@ public class test02 {
                     a.set(transformation(ans, a));
                 }
 
-                Vector4f _v0 = vs[0].copy();
+                Vector4f _v0 = vs[0].clone();
                 _v0.mul(scale);
                 for (int i = 1; i < ps.length; i++) {
-                    Vector4f _v = ps[i].copy();
+                    Vector4f _v = ps[i].clone();
                     _v.mul(scale);
 
                     {
-                        var v = _v.copy();
-                        var v0 = _v0.copy();
+                        var v = _v.clone();
+                        var v0 = _v0.clone();
                         transformation(viewport, v0);
                         transformation(viewport, v);
 
@@ -203,12 +203,12 @@ public class test02 {
                 }
 
                 public void drawAxis(Vector4f[] xyzPos) {
-                    Vector4f x0 = xyzPos[0].copy().mul(scale);
-                    Vector4f x1 = xyzPos[1].copy().mul(scale);
-                    Vector4f y0 = xyzPos[2].copy().mul(scale);
-                    Vector4f y1 = xyzPos[3].copy().mul(scale);
-                    Vector4f z0 = xyzPos[4].copy().mul(scale);
-                    Vector4f z1 = xyzPos[5].copy().mul(scale);
+                    Vector4f x0 = xyzPos[0].clone().mul(scale);
+                    Vector4f x1 = xyzPos[1].clone().mul(scale);
+                    Vector4f y0 = xyzPos[2].clone().mul(scale);
+                    Vector4f y1 = xyzPos[3].clone().mul(scale);
+                    Vector4f z0 = xyzPos[4].clone().mul(scale);
+                    Vector4f z1 = xyzPos[5].clone().mul(scale);
 
                     g.setColor(Color.RED);
                     drawLine((int) x0.x, (int) x0.y, (int) x1.x, (int) x1.y);
@@ -317,9 +317,9 @@ public class test02 {
      */
     public static Vector4f[] donut(float r, float th, int div, int sph) {
         Vector4f[] dPols = new Vector4f[sph * div];
-        Matrix4f rMat = Matrix4f.DIAGONAL.copy();
-        Matrix4f rdMat = Matrix4f.DIAGONAL.copy();
-        Matrix4f tMat = Matrix4f.DIAGONAL.copy();
+        Matrix4f rMat = Matrix4f.DIAGONAL.clone();
+        Matrix4f rdMat = Matrix4f.DIAGONAL.clone();
+        Matrix4f tMat = Matrix4f.DIAGONAL.clone();
         final float sD = (float) (2 * PI / sph);
         final float dD = (float) (2 * PI / div);
 
@@ -344,23 +344,3 @@ public class test02 {
         return re.toArray(new Vector4f[0]);
     }
 }
-//
-//class TestMat4f {
-//    Matrix4f m4f;
-//
-//    public TestMat4f(Matrix4f scopy) {
-//        m4f = scopy;
-//    }
-//
-//    public void rotate_test(String method) throws ReflectiveOperationException {
-//        Method r90Z = m4f.getClass().getDeclaredMethod("rotate" + method);
-//        r90Z.setAccessible(true);
-//        r90Z.invoke(m4f);
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return m4f.toString();
-//    }
-//}
-

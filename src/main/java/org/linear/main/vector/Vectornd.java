@@ -358,7 +358,7 @@ public class Vectornd extends AbsVector<Double, Vectornd> implements DoubleVecto
     }
 
     @Override
-    public Vectornd copy() {
+    public Vectornd clone() {
         return new Vectornd(v);
     }
 
