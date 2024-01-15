@@ -18,6 +18,8 @@ public non-sealed interface Linear<E extends Number, V extends Linear<E, V>>
 
    boolean equals(V value);
 
+   V clone();
+
    @Final
    boolean isNaN();
 }
