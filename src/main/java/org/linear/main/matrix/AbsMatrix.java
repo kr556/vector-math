@@ -4,10 +4,6 @@ import org.linear.main.vector.AbsVector;
 import org.liner.annotation.PropertiesMethod;
 import org.linear.main.Arithmetic;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-
 public abstract class AbsMatrix<E extends Number, V extends Matrix<E, V, TRNS>, TRNS extends Matrix<E, TRNS, V>>
         implements Matrix<E, V, TRNS>, Arithmetic<E, V>, MatrixFunctions<E, V, TRNS> {
 

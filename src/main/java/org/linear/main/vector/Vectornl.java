@@ -119,7 +119,7 @@ public class Vectornl extends AbsVector<Long, Vectornl> implements LongVector<Ve
     @Override
     public Vectornl mul(double value) {
         for (int i = 0; i < v.length; i++) {
-            this.v[i] *= value;
+            this.v[i] = (long) (v[i] * value);
         }
 
         return this;
@@ -155,7 +155,7 @@ public class Vectornl extends AbsVector<Long, Vectornl> implements LongVector<Ve
     @Override
     public Vectornl div(double value) {
         for (int i = 0; i < v.length; i++) {
-            this.v[i] /= value;
+            this.v[i] = (long) (v[i] / value);
         }
 
         return this;

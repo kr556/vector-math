@@ -118,7 +118,7 @@ public class Vectorni extends AbsVector<Integer, Vectorni> implements IntVector<
     @Override
     public Vectorni mul(float value) {
         for (int i = 0; i < v.length; i++) {
-            this.v[i] *= value;
+            this.v[i] = (int) (value * v[i]);
         }
 
         return this;
@@ -154,7 +154,7 @@ public class Vectorni extends AbsVector<Integer, Vectorni> implements IntVector<
     @Override
     public Vectorni div(float value) {
         for (int i = 0; i < v.length; i++) {
-            this.v[i] /= value;
+            this.v[i] = (int) (value / v[i]);
         }
 
         return this;
