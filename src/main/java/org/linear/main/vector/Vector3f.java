@@ -120,17 +120,11 @@ public class Vector3f extends AbsVector<Float, Vector3f> implements FloatVector<
     }
 
     @Override
-    public Vector3f mul(float value) {
-        this.x *= value;
-        this.y *= value;
-        this.z *= value;
+    public Vector3f mul(double value) {
+        this.x *= (float) value;
+        this.y *= (float) value;
+        this.z *= (float) value;
         return this;
-    }
-
-    @Override
-    public Vector3f mul(float value, Vector3f pointer) {
-        pointer.set(this);
-        return pointer.mul(value);
     }
 
     @Override
@@ -148,17 +142,11 @@ public class Vector3f extends AbsVector<Float, Vector3f> implements FloatVector<
     }
 
     @Override
-    public Vector3f div(float value) {
-        this.x /= value;
-        this.y /= value;
-        this.z /= value;
+    public Vector3f div(double value) {
+        this.x /= (float) value;
+        this.y /= (float) value;
+        this.z /= (float) value;
         return this;
-    }
-
-    @Override
-    public Vector3f div(float value, Vector3f pointer) {
-        pointer.set(this);
-        return pointer.div(value);
     }
 
     @Override

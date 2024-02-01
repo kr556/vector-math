@@ -1,7 +1,6 @@
 package org.linear.main.matrix;
 
 
-import org.jetbrains.annotations.NotNull;
 import org.linear.main.vector.Vector3f;
 import org.linear.main.vector.Vector4f;
 import org.liner.annotation.Final;
@@ -46,7 +45,7 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
     public Matrix4f() {}
 
     @Override
-    public final float determinant() {
+    public final double determinant() {
         return (m00 * m11 - m01 * m10) * (m22 * m33 - m23 * m32)
                - (m00 * m12 - m02 * m10) * (m21 * m33 - m23 * m31)
                + (m00 * m13 - m03 * m10) * (m21 * m32 - m22 * m31)
@@ -64,7 +63,7 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
     }
 
     @Override
-    public final Matrix4f clone() {
+    public final Matrix4f craete() {
         return new Matrix4f(this);
     }
 
@@ -109,13 +108,6 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
     }
 
     @Override
-    public final Matrix4f add(Matrix4f value, Matrix4f pointer) {
-        pointer.set(this);
-
-        return pointer.add(value);
-    }
-
-    @Override
     public final Matrix4f sub(float value) {
         this.m00 -= value; this.m01 -= value; this.m02 -= value; this.m03 -= value;
         this.m10 -= value; this.m11 -= value; this.m12 -= value; this.m13 -= value;
@@ -141,26 +133,12 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
     }
 
     @Override
-    public final Matrix4f sub(Matrix4f value, Matrix4f pointer) {
-        pointer.set(this);
-
-        return pointer.sub(value);
-    }
-
-    @Override
-    public final Matrix4f mul(float value) {
-        this.m00 *= value; this.m01 *= value; this.m02 *= value; this.m03 *= value;
-        this.m10 *= value; this.m11 *= value; this.m12 *= value; this.m13 *= value;
-        this.m20 *= value; this.m21 *= value; this.m22 *= value; this.m23 *= value;
-        this.m30 *= value; this.m31 *= value; this.m32 *= value; this.m33 *= value;
+    public final Matrix4f mul(double value) {
+        this.m00 *= (float) value; this.m01 *= (float) value; this.m02 *= (float) value; this.m03 *= (float) value;
+        this.m10 *= (float) value; this.m11 *= (float) value; this.m12 *= (float) value; this.m13 *= (float) value;
+        this.m20 *= (float) value; this.m21 *= (float) value; this.m22 *= (float) value; this.m23 *= (float) value;
+        this.m30 *= (float) value; this.m31 *= (float) value; this.m32 *= (float) value; this.m33 *= (float) value;
         return this;
-    }
-
-    @Override
-    public final Matrix4f mul(float value, Matrix4f pointer) {
-        pointer.set(this);
-
-        return pointer.mul(value);
     }
 
     public final Matrix4f mul(float m00, float m01, float m02, float m03,
@@ -184,26 +162,12 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
     }
 
     @Override
-    public final Matrix4f mul(Matrix4f value, Matrix4f pointer) {
-        pointer.set(this);
-        pointer.mul(value);
-        return pointer;
-    }
-
-    @Override
-    public final Matrix4f div(float value) {
-        this.m00 /= value; this.m01 /= value; this.m02 /= value; this.m03 /= value;
-        this.m10 /= value; this.m11 /= value; this.m12 /= value; this.m13 /= value;
-        this.m20 /= value; this.m21 /= value; this.m22 /= value; this.m23 /= value;
-        this.m30 /= value; this.m31 /= value; this.m32 /= value; this.m33 /= value;
+    public final Matrix4f div(double value) {
+        this.m00 /= (float) value; this.m01 /= (float) value; this.m02 /= (float) value; this.m03 /= (float) value;
+        this.m10 /= (float) value; this.m11 /= (float) value; this.m12 /= (float) value; this.m13 /= (float) value;
+        this.m20 /= (float) value; this.m21 /= (float) value; this.m22 /= (float) value; this.m23 /= (float) value;
+        this.m30 /= (float) value; this.m31 /= (float) value; this.m32 /= (float) value; this.m33 /= (float) value;
         return this;
-    }
-
-    @Override
-    public final Matrix4f div(float value, Matrix4f pointer) {
-        pointer.set(this);
-
-        return pointer.div(value);
     }
 
     @Override
@@ -213,13 +177,6 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
         this.m20 /= value.m20; this.m21 /= value.m21; this.m22 /= value.m22; this.m23 /= value.m23;
         this.m30 /= value.m30; this.m31 /= value.m31; this.m32 /= value.m32; this.m33 /= value.m33;
         return this;
-    }
-
-    @Override
-    public final Matrix4f div(Matrix4f value, Matrix4f pointer) {
-        pointer.set(this);
-
-        return pointer.div(value);
     }
 
     @Override
@@ -246,7 +203,7 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
     }
 
     @Override
-    public final boolean equals(@NotNull Matrix4f value) {
+    public final boolean equals(Matrix4f value) {
         if (this == value) return true;
         return this.m00 == value.m00 &&
                this.m01 == value.m01 &&
@@ -298,27 +255,6 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
 
         m23 = m32;
         m32 = tmp;
-        return this;
-    }
-
-    @Override
-    public final Matrix4f transpose(Matrix4f pointer) {
-        pointer.m00 = m00;
-        pointer.m01 = m10;
-        pointer.m02 = m20;
-        pointer.m03 = m30;
-        pointer.m10 = m01;
-        pointer.m11 = m11;
-        pointer.m12 = m21;
-        pointer.m13 = m31;
-        pointer.m20 = m02;
-        pointer.m21 = m12;
-        pointer.m22 = m22;
-        pointer.m23 = m32;
-        pointer.m30 = m03;
-        pointer.m31 = m13;
-        pointer.m32 = m23;
-        pointer.m33 = m33;
         return this;
     }
 
@@ -391,7 +327,7 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
     }
 
     @Override
-    public final Matrix4f create() {
+    public Matrix4f create() {
         return new Matrix4f();
     }
 
@@ -556,37 +492,24 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
     }
 
     @Override
-    public final Matrix4f invert() {
-        final float det = determinant();
-        if (det != 0) {
-            set(
-                    m11 * (m22 * m33 - m23 * m32) + m12 * (m23 * m31 - m21 * m33) + m13 * (m21 * m32 - m22 * m31),
-                    m21 * (m02 * m33 - m03 * m32) + m22 * (m03 * m31 - m01 * m33) + m23 * (m01 * m32 - m02 * m31),
-                    m31 * (m02 * m13 - m03 * m12) + m32 * (m03 * m11 - m01 * m13) + m33 * (m01 * m12 - m02 * m11),
-                    m01 * (m13 * m22 - m12 * m23) + m02 * (m11 * m23 - m13 * m21) + m03 * (m12 * m21 - m11 * m22),
-                    m12 * (m20 * m33 - m23 * m30) + m13 * (m22 * m30 - m20 * m32) + m10 * (m23 * m32 - m22 * m33),
-                    m22 * (m00 * m33 - m03 * m30) + m23 * (m02 * m30 - m00 * m32) + m20 * (m03 * m32 - m02 * m33),
-                    m32 * (m00 * m13 - m03 * m10) + m33 * (m02 * m10 - m00 * m12) + m30 * (m03 * m12 - m02 * m13),
-                    m02 * (m13 * m20 - m10 * m23) + m03 * (m10 * m22 - m12 * m20) + m00 * (m12 * m23 - m13 * m22),
-                    m13 * (m20 * m31 - m21 * m30) + m10 * (m21 * m33 - m23 * m31) + m11 * (m23 * m30 - m20 * m33),
-                    m23 * (m00 * m31 - m01 * m30) + m20 * (m01 * m33 - m03 * m31) + m21 * (m03 * m30 - m00 * m33),
-                    m33 * (m00 * m11 - m01 * m10) + m30 * (m01 * m13 - m03 * m11) + m31 * (m03 * m10 - m00 * m13),
-                    m03 * (m11 * m20 - m10 * m21) + m00 * (m13 * m21 - m11 * m23) + m01 * (m10 * m23 - m13 * m20),
-                    m10 * (m22 * m31 - m21 * m32) + m11 * (m20 * m32 - m22 * m30) + m12 * (m21 * m30 - m20 * m31),
-                    m20 * (m02 * m31 - m01 * m32) + m21 * (m00 * m32 - m02 * m30) + m22 * (m01 * m30 - m00 * m31),
-                    m30 * (m02 * m11 - m01 * m12) + m31 * (m00 * m12 - m02 * m10) + m32 * (m01 * m10 - m00 * m11),
-                    m00 * (m11 * m22 - m12 * m21) + m01 * (m12 * m20 - m10 * m22) + m02 * (m10 * m21 - m11 * m20));
-            return mul(1 / det);
-        }
-
-        return NAN;
-    }
-
-    @Override
-    public final Matrix4f invert(Matrix4f pointer) {
-        set(pointer);
-        pointer.set(this);
-        return pointer.invert();
+    public Matrix4f cofactor() {
+        set(m11 * (m22 * m33 - m23 * m32) + m12 * (m23 * m31 - m21 * m33) + m13 * (m21 * m32 - m22 * m31),
+                m21 * (m02 * m33 - m03 * m32) + m22 * (m03 * m31 - m01 * m33) + m23 * (m01 * m32 - m02 * m31),
+                m31 * (m02 * m13 - m03 * m12) + m32 * (m03 * m11 - m01 * m13) + m33 * (m01 * m12 - m02 * m11),
+                m01 * (m13 * m22 - m12 * m23) + m02 * (m11 * m23 - m13 * m21) + m03 * (m12 * m21 - m11 * m22),
+                m12 * (m20 * m33 - m23 * m30) + m13 * (m22 * m30 - m20 * m32) + m10 * (m23 * m32 - m22 * m33),
+                m22 * (m00 * m33 - m03 * m30) + m23 * (m02 * m30 - m00 * m32) + m20 * (m03 * m32 - m02 * m33),
+                m32 * (m00 * m13 - m03 * m10) + m33 * (m02 * m10 - m00 * m12) + m30 * (m03 * m12 - m02 * m13),
+                m02 * (m13 * m20 - m10 * m23) + m03 * (m10 * m22 - m12 * m20) + m00 * (m12 * m23 - m13 * m22),
+                m13 * (m20 * m31 - m21 * m30) + m10 * (m21 * m33 - m23 * m31) + m11 * (m23 * m30 - m20 * m33),
+                m23 * (m00 * m31 - m01 * m30) + m20 * (m01 * m33 - m03 * m31) + m21 * (m03 * m30 - m00 * m33),
+                m33 * (m00 * m11 - m01 * m10) + m30 * (m01 * m13 - m03 * m11) + m31 * (m03 * m10 - m00 * m13),
+                m03 * (m11 * m20 - m10 * m21) + m00 * (m13 * m21 - m11 * m23) + m01 * (m10 * m23 - m13 * m20),
+                m10 * (m22 * m31 - m21 * m32) + m11 * (m20 * m32 - m22 * m30) + m12 * (m21 * m30 - m20 * m31),
+                m20 * (m02 * m31 - m01 * m32) + m21 * (m00 * m32 - m02 * m30) + m22 * (m01 * m30 - m00 * m31),
+                m30 * (m02 * m11 - m01 * m12) + m31 * (m00 * m12 - m02 * m10) + m32 * (m01 * m10 - m00 * m11),
+                m00 * (m11 * m22 - m12 * m21) + m01 * (m12 * m20 - m10 * m22) + m02 * (m10 * m21 - m11 * m20));
+        return this;
     }
 
     public final Matrix4f translate(float x, float y, float z) {

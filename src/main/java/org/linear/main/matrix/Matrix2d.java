@@ -43,13 +43,20 @@ public class Matrix2d extends SquareMatrix<Double, Matrix2d>
     }
 
     @Override
+    public Matrix2d cofactor() {
+        set(m11, -m01,
+                -m10, m00);
+        return this;
+    }
+
+    @Override
     public void set(Matrix2d copy) {
         this.m00 = copy.m00; this.m01 = copy.m01;
         this.m10 = copy.m10; this.m11 = copy.m11;
     }
 
     @Override
-    public Matrix2d clone() {
+    public Matrix2d craete() {
         return new Matrix2d(this);
     }
 
@@ -260,19 +267,19 @@ public class Matrix2d extends SquareMatrix<Double, Matrix2d>
     @PropertiesMethod
     @Override
     public final int columnDimension() {
-        return 3;
+        return 2;
     }
 
     @PropertiesMethod
     @Override
     public final int rowDimension() {
-        return 3;
+        return 2;
     }
 
     @PropertiesMethod
     @Override
     public final int elementsSize() {
-        return 9;
+        return 4;
     }
 
     @Final
@@ -338,20 +345,6 @@ public class Matrix2d extends SquareMatrix<Double, Matrix2d>
             };
             default -> throw new ArrayIndexOutOfBoundsException();
         };
-    }
-
-    @Override
-    public Matrix2d invert() {
-        double det = determinant();
-        if (det != 0) {
-            set(
-                    m11, -m01,
-                    -m10, m00);
-
-            return this.mul(1 / det);
-        }
-
-        return null;
     }
 
     @Override

@@ -48,7 +48,7 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
     }
 
     @Override
-    public float determinant() {
+    public double determinant() {
         return m00 * m11 * m22 +
                m01 * m12 * m20 +
                m02 * m10 * m21 -
@@ -71,7 +71,7 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
     }
 
     @Override
-    public Matrix3f clone() {
+    public Matrix3f craete() {
         return new Matrix3f(this);
     }
 
@@ -156,18 +156,18 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
     }
 
     @Override
-    public Matrix3f mul(float value) {
-        this.m00 *= value; this.m01 *= value; this.m02 *= value;
-        this.m10 *= value; this.m11 *= value; this.m12 *= value;
-        this.m20 *= value; this.m21 *= value; this.m22 *= value;
+    public Matrix3f mul(double value) {
+        this.m00 *= (float) value; this.m01 *= (float) value; this.m02 *= (float) value;
+        this.m10 *= (float) value; this.m11 *= (float) value; this.m12 *= (float) value;
+        this.m20 *= (float) value; this.m21 *= (float) value; this.m22 *= (float) value;
         return this;
     }
 
     @Override
-    public Matrix3f mul(float value, Matrix3f pointer) {
-        pointer.m00 = m00 * value; pointer.m01 = m01 * value; pointer.m02 = m02 * value;
-        pointer.m10 = m10 * value; pointer.m11 = m11 * value; pointer.m12 = m12 * value;
-        pointer.m20 = m20 * value; pointer.m21 = m21 * value; pointer.m22 = m22 * value;
+    public Matrix3f mul(double value, Matrix3f pointer) {
+        pointer.m00 = (float) (m00 * value); pointer.m01 = (float) (m01 * value); pointer.m02 = (float) (m02 * value);
+        pointer.m10 = (float) (m10 * value); pointer.m11 = (float) (m11 * value); pointer.m12 = (float) (m12 * value);
+        pointer.m20 = (float) (m20 * value); pointer.m21 = (float) (m21 * value); pointer.m22 = (float) (m22 * value);
         return pointer;
     }
 
@@ -209,18 +209,18 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
     }
 
     @Override
-    public Matrix3f div(float value) {
-        this.m00 /= value; this.m01 /= value; this.m02 /= value;
-        this.m10 /= value; this.m11 /= value; this.m12 /= value;
-        this.m20 /= value; this.m21 /= value; this.m22 /= value;
+    public Matrix3f div(double value) {
+        this.m00 /= (float) value; this.m01 /= (float) value; this.m02 /= (float) value;
+        this.m10 /= (float) value; this.m11 /= (float) value; this.m12 /= (float) value;
+        this.m20 /= (float) value; this.m21 /= (float) value; this.m22 /= (float) value;
         return this;
     }
 
     @Override
-    public Matrix3f div(float value, Matrix3f pointer) {
-        pointer.m00 = m00 / value; pointer.m01 = m01 / value; pointer.m02 = m02 / value;
-        pointer.m10 = m10 / value; pointer.m11 = m11 / value; pointer.m12 = m12 / value;
-        pointer.m20 = m20 / value; pointer.m21 = m21 / value; pointer.m22 = m22 / value;
+    public Matrix3f div(double value, Matrix3f pointer) {
+        pointer.m00 = (float) (m00 / value); pointer.m01 = (float) (m01 / value); pointer.m02 = (float) (m02 / value);
+        pointer.m10 = (float) (m10 / value); pointer.m11 = (float) (m11 / value); pointer.m12 = (float) (m12 / value);
+        pointer.m20 = (float) (m20 / value); pointer.m21 = (float) (m21 / value); pointer.m22 = (float) (m22 / value);
         return pointer;
     }
 
@@ -455,19 +455,12 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
     }
 
     @Override
-    public Matrix3f invert() {
-        float det = determinant();
-        if (det != 0) {
-            set(
-                    m11 * m22 - m12 * m21, m02 * m21 - m01 * m22, m01 * m12 - m02 * m11,
-                    m12 * m20 - m10 * m22, m00 * m22 - m02 * m20, m02 * m10 - m00 * m12,
-                    m10 * m21 - m11 * m20, m01 * m20 - m00 * m21, m00 * m11 - m01 * m10
-            );
-
-            return this.mul(1 / det);
-        }
-
-        return null;
+    public Matrix3f cofactor() {
+        set(
+                m11 * m22 - m12 * m21, m02 * m21 - m01 * m22, m01 * m12 - m02 * m11,
+                m12 * m20 - m10 * m22, m00 * m22 - m02 * m20, m02 * m10 - m00 * m12,
+                m10 * m21 - m11 * m20, m01 * m20 - m00 * m21, m00 * m11 - m01 * m10);
+        return this;
     }
 
     @Override
@@ -481,12 +474,12 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
         pointer[0] = this.m00;
         pointer[1] = this.m01;
         pointer[2] = this.m02;
-        pointer[4] = this.m10;
-        pointer[5] = this.m11;
-        pointer[6] = this.m12;
-        pointer[8] = this.m20;
-        pointer[9] = this.m21;
-        pointer[10] = this.m22;
+        pointer[3] = this.m10;
+        pointer[4] = this.m11;
+        pointer[5] = this.m12;
+        pointer[6] = this.m20;
+        pointer[7] = this.m21;
+        pointer[8] = this.m22;
         return pointer;
     }
 

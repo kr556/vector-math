@@ -6,8 +6,4 @@ public interface ArithmeticInt<V extends Linear<Integer, V>> extends Arithmetic<
     V add(int value, V pointer);
     V sub(int value);
     V sub(int value, V pointer);
-    V mul(float value);
-    V mul(float value, V pointer);
-    V div(float value);
-    V div(float value, V pointer);
 }

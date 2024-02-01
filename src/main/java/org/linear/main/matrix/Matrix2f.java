@@ -36,7 +36,7 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
     }
 
     @Override
-    public float determinant() {
+    public double determinant() {
         return m00 * m11 - m01 * m10;
     }
 
@@ -49,7 +49,7 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
     }
 
     @Override
-    public Matrix2f clone() {
+    public Matrix2f craete() {
         return new Matrix2f(this);
     }
 
@@ -124,30 +124,17 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
     }
 
     @Override
-    public Matrix2f mul(float value) {
-        this.m00 *= value; this.m01 *= value;
-        this.m10 *= value; this.m11 *= value;
+    public Matrix2f mul(double value) {
+        this.m00 *= (float) value; this.m01 *= (float) value;
+        this.m10 *= (float) value; this.m11 *= (float) value;
         return this;
     }
 
     @Override
-    public Matrix2f mul(float value, Matrix2f pointer) {
-        pointer.m00 = m00 * value; pointer.m01 = m01 * value;
-        pointer.m10 = m10 * value; pointer.m11 = m11 * value;
-        return pointer;
-    }
-
-    @Override
-    public Matrix2f div(float value) {
-        this.m00 /= value; this.m01 /= value;
-        this.m10 /= value; this.m11 /= value;
+    public Matrix2f div(double value) {
+        this.m00 /= (float) value; this.m01 /= (float) value;
+        this.m10 /= (float) value; this.m11 /= (float) value;
         return this;
-    }
-
-    @Override
-    public Matrix2f div(float value, Matrix2f pointer) {
-        pointer.set(this);
-        return pointer.div(value);
     }
 
     @Override
@@ -155,13 +142,6 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
         this.m00 /= value.m00; this.m01 /= value.m01;
         this.m10 /= value.m10; this.m11 /= value.m11;
         return this;
-    }
-
-    @Override
-    public Matrix2f div(Matrix2f value, Matrix2f pointer) {
-        pointer.set(this);
-
-        return pointer.div(value);
     }
 
     @Override
@@ -180,8 +160,8 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
     @Override
     public Float get(int index) {
         return switch (index) {
-            case 0  -> m00; case 2  -> m01;
-            case 4  -> m10; case 3  -> m11;
+            case 0  -> m00; case 1-> m01;
+            case 2  -> m10; case 3  -> m11;
             default -> throw new ArrayIndexOutOfBoundsException();
         };
     }
@@ -207,15 +187,6 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
         this.m01 = m12;
         this.m10 = m21;
         return this;
-    }
-
-    @Override
-    public Matrix2f transpose(Matrix2f pointer) {
-        pointer.m00 = m00;
-        pointer.m01 = m10;
-        pointer.m11 = m11;
-        pointer.m10 = m01;
-        return pointer;
     }
 
     public final Matrix2f mulC(float m00, float m01,
@@ -258,19 +229,19 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
     @PropertiesMethod
     @Override
     public final int columnDimension() {
-        return 3;
+        return 2;
     }
 
     @PropertiesMethod
     @Override
     public final int rowDimension() {
-        return 3;
+        return 2;
     }
 
     @PropertiesMethod
     @Override
     public int elementsSize() {
-        return 2;
+        return 4;
     }
 
     @Final
@@ -339,31 +310,18 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
     }
 
     @Override
-    public Matrix2f invert() {
-        float det = determinant();
-        if (det != 0) {
-            set(
-                    m11, -m01,
-                    -m10, m00);
-
-            return this.mul(1 / det);
-        }
-
-        return null;
-    }
-
-    @Override
-    public Matrix2f invert(Matrix2f pointer) {
-        pointer.set(this);
-        return pointer.invert();
+    public Matrix2f cofactor() {
+        set(m11, -m01,
+                -m10, m00);
+        return this;
     }
 
     @Override
     public float[] toArray(float[] pointer) {
         pointer[0] = this.m00;
         pointer[1] = this.m01;
-        pointer[4] = this.m10;
-        pointer[5] = this.m11;
+        pointer[2] = this.m10;
+        pointer[3] = this.m11;
         return pointer;
     }
 }

@@ -117,17 +117,11 @@ public class Vector3i extends AbsVector<Integer, Vector3i> implements IntVector<
     }
 
     @Override
-    public Vector3i mul(float value) {
+    public Vector3i mul(double value) {
         this.x *= (int) value;
         this.y *= (int) value;
         this.z *= (int) value;
         return this;
-    }
-
-    @Override
-    public Vector3i mul(float value, Vector3i pointer) {
-        pointer.set(this);
-        return pointer.mul(value);
     }
 
     @Override
@@ -145,17 +139,11 @@ public class Vector3i extends AbsVector<Integer, Vector3i> implements IntVector<
     }
 
     @Override
-    public Vector3i div(float value) {
+    public Vector3i div(double value) {
         this.x /= (int) value;
         this.y /= (int) value;
         this.z /= (int) value;
         return this;
-    }
-
-    @Override
-    public Vector3i div(float value, Vector3i pointer) {
-        pointer.set(this);
-        return pointer.div(value);
     }
 
     @Override

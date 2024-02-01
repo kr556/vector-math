@@ -74,16 +74,10 @@ public class Vector2i extends AbsVector<Integer, Vector2i> implements IntVector<
     }
 
     @Override
-    public Vector2i mul(float value) {
+    public Vector2i mul(double value) {
         this.x *= (int) value;
         this.y *= (int) value;
         return this;
-    }
-
-    @Override
-    public Vector2i mul(float value, Vector2i pointer) {
-        pointer.set(this);
-        return pointer.mul(value);
     }
 
     @Override
@@ -94,22 +88,10 @@ public class Vector2i extends AbsVector<Integer, Vector2i> implements IntVector<
     }
 
     @Override
-    public Vector2i mul(Vector2i value, Vector2i pointer) {
-        pointer.set(this);
-        return pointer.mul(value);
-    }
-
-    @Override
-    public Vector2i div(float value) {
+    public Vector2i div(double value) {
         this.x /= (int) value;
         this.y /= (int) value;
         return this;
-    }
-
-    @Override
-    public Vector2i div(float value, Vector2i pointer) {
-        pointer.set(this);
-        return pointer.div(value);
     }
 
     @Override
@@ -117,12 +99,6 @@ public class Vector2i extends AbsVector<Integer, Vector2i> implements IntVector<
         this.x /= value.x;
         this.y /= value.y;
         return this;
-    }
-
-    @Override
-    public Vector2i div(Vector2i value, Vector2i pointer) {
-        pointer.set(this);
-        return pointer.div(value);
     }
 
     @Override

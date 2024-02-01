@@ -65,7 +65,7 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
     }
 
     @Override
-    public final Matrix4d clone() {
+    public final Matrix4d craete() {
         return new Matrix4d(this);
     }
 
@@ -302,27 +302,6 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
         return this;
     }
 
-    @Override
-    public final Matrix4d transpose(Matrix4d pointer) {
-        pointer.m00 = m00;
-        pointer.m01 = m10;
-        pointer.m02 = m20;
-        pointer.m03 = m30;
-        pointer.m10 = m01;
-        pointer.m11 = m11;
-        pointer.m12 = m21;
-        pointer.m13 = m31;
-        pointer.m20 = m02;
-        pointer.m21 = m12;
-        pointer.m22 = m22;
-        pointer.m23 = m32;
-        pointer.m30 = m03;
-        pointer.m31 = m13;
-        pointer.m32 = m23;
-        pointer.m33 = m33;
-        return this;
-    }
-
     public final Matrix4d mulC(double m00, double m01, double m02, double m03,
                                double m10, double m11, double m12, double m13,
                                double m20, double m21, double m22, double m23,
@@ -389,101 +368,8 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
                 value.m30, value.m31, value.m32, value.m33);
     }
 
-//    @Override
-//    public Matrix3d[] submatries() {
-//        Matrix3d[] re = new Matrix3d[16];
-//        submatries(re);
-//        return re;
-//    }
-//
-//    @Override
-//    public void submatries(Matrix<Double, ?, ?>[] pointer) {
-//        pointer[0] = new Matrix3d(m11, m12, m13, m21, m22, m23, m31, m32, m33);
-//        pointer[1] = new Matrix3d(m10, m12, m13, m20, m22, m23, m30, m32, m33);
-//        pointer[2] = new Matrix3d(m10, m11, m13, m20, m21, m23, m30, m31, m33);
-//        pointer[3] = new Matrix3d(m10, m11, m12, m20, m21, m22, m30, m31, m32);
-//        pointer[4] = new Matrix3d(m01, m02, m03, m21, m22, m23, m31, m32, m33);
-//        pointer[5] = new Matrix3d(m00, m02, m03, m20, m22, m23, m30, m32, m33);
-//        pointer[6] = new Matrix3d(m00, m01, m03, m20, m21, m23, m30, m31, m33);
-//        pointer[7] = new Matrix3d(m00, m01, m02, m20, m21, m22, m30, m31, m32);
-//        pointer[8] = new Matrix3d(m01, m02, m03, m11, m12, m13, m31, m32, m33);
-//        pointer[9] = new Matrix3d(m00, m02, m03, m10, m12, m13, m30, m32, m33);
-//        pointer[10] = new Matrix3d(m00, m01, m03, m10, m11, m13, m30, m31, m33);
-//        pointer[11] = new Matrix3d(m00, m01, m02, m10, m11, m12, m30, m31, m32);
-//        pointer[12] = new Matrix3d(m01, m02, m03, m11, m12, m13, m21, m22, m23);
-//        pointer[13] = new Matrix3d(m00, m02, m03, m10, m12, m13, m20, m22, m23);
-//        pointer[14] = new Matrix3d(m00, m01, m03, m10, m11, m13, m20, m21, m23);
-//        pointer[15] = new Matrix3d(m00, m01, m02, m10, m11, m12, m20, m21, m22);
-//    }
-//
-//    @Override
-//    public Matrix3d submatrix(int r, int c) {
-//        switch (r) {
-//            case 0 :
-//                switch (c) {
-//                    case 0 : return new Matrix3d(m11, m12, m13, m21, m22, m23, m31, m32, m33);
-//                    case 1 : return new Matrix3d(m10, m12, m13, m20, m22, m23, m30, m32, m33);
-//                    case 2 : return new Matrix3d(m10, m11, m13, m20, m21, m23, m30, m31, m33);
-//                    case 3 : return new Matrix3d(m10, m11, m12, m20, m21, m22, m30, m31, m32);
-//                    default : throw new ArrayIndexOutOfBoundsException();
-//                }
-//            case 1 :
-//                switch (c) {
-//                    case 0 : return new Matrix3d(m01, m02, m03, m21, m22, m23, m31, m32, m33);
-//                    case 1 : return new Matrix3d(m00, m02, m03, m20, m22, m23, m30, m32, m33);
-//                    case 2 : return new Matrix3d(m00, m01, m03, m20, m21, m23, m30, m31, m33);
-//                    case 3 : return new Matrix3d(m00, m01, m02, m20, m21, m22, m30, m31, m32);
-//                    default : throw new ArrayIndexOutOfBoundsException();
-//                }
-//            case 2 :
-//                switch (c) {
-//                    case 0 : return new Matrix3d(m01, m02, m03, m11, m12, m13, m31, m32, m33);
-//                    case 1 : return new Matrix3d(m00, m02, m03, m10, m12, m13, m30, m32, m33);
-//                    case 2 : return new Matrix3d(m00, m01, m03, m10, m11, m13, m30, m31, m33);
-//                    case 3 : return new Matrix3d(m00, m01, m02, m10, m11, m12, m30, m31, m32);
-//                default : throw new ArrayIndexOutOfBoundsException();
-//            }
-//
-//            case 3 :
-//                switch (c) {
-//                    case 0 : return new Matrix3d(m01, m02, m03, m11, m12, m13, m21, m22, m23);
-//                    case 1 : return new Matrix3d(m00, m02, m03, m10, m12, m13, m20, m22, m23);
-//                    case 2 : return new Matrix3d(m00, m01, m03, m10, m11, m13, m20, m21, m23);
-//                    case 3 : return new Matrix3d(m00, m01, m02, m10, m11, m12, m20, m21, m22);
-//                    default : throw new ArrayIndexOutOfBoundsException();
-//                }
-//            default : throw new ArrayIndexOutOfBoundsException();
-//        }
-//    }
-//
-//    @Override
-//    public Matrix4d cofactor() {
-//        Matrix3d[] ms = submatries();
-//        return new Matrix4d(
-//                ms[0].determinant() * m00,
-//                -ms[4].determinant() * m10,
-//                ms[8].determinant() * m20,
-//                -ms[12].determinant() * m30,
-//
-//                -ms[1].determinant() * m01,
-//                ms[5].determinant() * m11,
-//                -ms[9].determinant() * m21,
-//                ms[13].determinant() * m31,
-//
-//                ms[2].determinant() * m02,
-//                -ms[6].determinant() * m12,
-//                ms[10].determinant() * m22,
-//                -ms[14].determinant() * m32,
-//
-//                -ms[3].determinant() * m03,
-//                ms[7].determinant() * m13,
-//                -ms[11].determinant() * m23,
-//                ms[15].determinant() * m33
-//        );
-//    }
-
     @Override
-    public final Matrix4d create() {
+    public Matrix4d create() {
         return new Matrix4d();
     }
 
@@ -648,37 +534,25 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
     }
 
     @Override
-    public final Matrix4d invert() {
-        final double det = determinant();
-        if (det != 0) {
-            set(
-                    m11 * (m22 * m33 - m23 * m32) + m12 * (m23 * m31 - m21 * m33) + m13 * (m21 * m32 - m22 * m31),
-                    m21 * (m02 * m33 - m03 * m32) + m22 * (m03 * m31 - m01 * m33) + m23 * (m01 * m32 - m02 * m31),
-                    m31 * (m02 * m13 - m03 * m12) + m32 * (m03 * m11 - m01 * m13) + m33 * (m01 * m12 - m02 * m11),
-                    m01 * (m13 * m22 - m12 * m23) + m02 * (m11 * m23 - m13 * m21) + m03 * (m12 * m21 - m11 * m22),
-                    m12 * (m20 * m33 - m23 * m30) + m13 * (m22 * m30 - m20 * m32) + m10 * (m23 * m32 - m22 * m33),
-                    m22 * (m00 * m33 - m03 * m30) + m23 * (m02 * m30 - m00 * m32) + m20 * (m03 * m32 - m02 * m33),
-                    m32 * (m00 * m13 - m03 * m10) + m33 * (m02 * m10 - m00 * m12) + m30 * (m03 * m12 - m02 * m13),
-                    m02 * (m13 * m20 - m10 * m23) + m03 * (m10 * m22 - m12 * m20) + m00 * (m12 * m23 - m13 * m22),
-                    m13 * (m20 * m31 - m21 * m30) + m10 * (m21 * m33 - m23 * m31) + m11 * (m23 * m30 - m20 * m33),
-                    m23 * (m00 * m31 - m01 * m30) + m20 * (m01 * m33 - m03 * m31) + m21 * (m03 * m30 - m00 * m33),
-                    m33 * (m00 * m11 - m01 * m10) + m30 * (m01 * m13 - m03 * m11) + m31 * (m03 * m10 - m00 * m13),
-                    m03 * (m11 * m20 - m10 * m21) + m00 * (m13 * m21 - m11 * m23) + m01 * (m10 * m23 - m13 * m20),
-                    m10 * (m22 * m31 - m21 * m32) + m11 * (m20 * m32 - m22 * m30) + m12 * (m21 * m30 - m20 * m31),
-                    m20 * (m02 * m31 - m01 * m32) + m21 * (m00 * m32 - m02 * m30) + m22 * (m01 * m30 - m00 * m31),
-                    m30 * (m02 * m11 - m01 * m12) + m31 * (m00 * m12 - m02 * m10) + m32 * (m01 * m10 - m00 * m11),
-                    m00 * (m11 * m22 - m12 * m21) + m01 * (m12 * m20 - m10 * m22) + m02 * (m10 * m21 - m11 * m20));
-            return mul(1 / det);
-        }
-
-        return NAN;
-    }
-
-    @Override
-    public final Matrix4d invert(Matrix4d pointer) {
-        set(pointer);
-        pointer.set(this);
-        return pointer.invert();
+    public Matrix4d cofactor() {
+        set(
+                m11 * (m22 * m33 - m23 * m32) + m12 * (m23 * m31 - m21 * m33) + m13 * (m21 * m32 - m22 * m31),
+                m21 * (m02 * m33 - m03 * m32) + m22 * (m03 * m31 - m01 * m33) + m23 * (m01 * m32 - m02 * m31),
+                m31 * (m02 * m13 - m03 * m12) + m32 * (m03 * m11 - m01 * m13) + m33 * (m01 * m12 - m02 * m11),
+                m01 * (m13 * m22 - m12 * m23) + m02 * (m11 * m23 - m13 * m21) + m03 * (m12 * m21 - m11 * m22),
+                m12 * (m20 * m33 - m23 * m30) + m13 * (m22 * m30 - m20 * m32) + m10 * (m23 * m32 - m22 * m33),
+                m22 * (m00 * m33 - m03 * m30) + m23 * (m02 * m30 - m00 * m32) + m20 * (m03 * m32 - m02 * m33),
+                m32 * (m00 * m13 - m03 * m10) + m33 * (m02 * m10 - m00 * m12) + m30 * (m03 * m12 - m02 * m13),
+                m02 * (m13 * m20 - m10 * m23) + m03 * (m10 * m22 - m12 * m20) + m00 * (m12 * m23 - m13 * m22),
+                m13 * (m20 * m31 - m21 * m30) + m10 * (m21 * m33 - m23 * m31) + m11 * (m23 * m30 - m20 * m33),
+                m23 * (m00 * m31 - m01 * m30) + m20 * (m01 * m33 - m03 * m31) + m21 * (m03 * m30 - m00 * m33),
+                m33 * (m00 * m11 - m01 * m10) + m30 * (m01 * m13 - m03 * m11) + m31 * (m03 * m10 - m00 * m13),
+                m03 * (m11 * m20 - m10 * m21) + m00 * (m13 * m21 - m11 * m23) + m01 * (m10 * m23 - m13 * m20),
+                m10 * (m22 * m31 - m21 * m32) + m11 * (m20 * m32 - m22 * m30) + m12 * (m21 * m30 - m20 * m31),
+                m20 * (m02 * m31 - m01 * m32) + m21 * (m00 * m32 - m02 * m30) + m22 * (m01 * m30 - m00 * m31),
+                m30 * (m02 * m11 - m01 * m12) + m31 * (m00 * m12 - m02 * m10) + m32 * (m01 * m10 - m00 * m11),
+                m00 * (m11 * m22 - m12 * m21) + m01 * (m12 * m20 - m10 * m22) + m02 * (m10 * m21 - m11 * m20));
+        return this;
     }
 
     public final Matrix4d translate(double x, double y, double z) {

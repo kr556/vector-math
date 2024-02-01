@@ -6,8 +6,4 @@ public interface ArithmeticDouble<V extends Linear<Double, V>> extends Arithmeti
     V add(double value, V pointer);
     V sub(double value);
     V sub(double value, V pointer);
-    V mul(double value);
-    V mul(double value, V pointer);
-    V div(double value);
-    V div(double value, V pointer);
 }
