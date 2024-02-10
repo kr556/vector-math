@@ -14,6 +14,10 @@ public class Vector2d extends AbsVector<Double, Vector2d> implements DoubleVecto
 
     public Vector2d() {}
 
+    public Vector2d(double all) {
+        this(all, all);
+    }
+
     public Vector2d(Vector2d copy) {
         set(copy);
     }

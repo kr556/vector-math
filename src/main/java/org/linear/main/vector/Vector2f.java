@@ -15,6 +15,10 @@ public class Vector2f extends AbsVector<Float, Vector2f> implements FloatVector<
 
     public Vector2f() {}
 
+    public Vector2f(float all) {
+        this(all, all);
+    }
+
     public Vector2f(Vector2f copy) {
         set(copy);
     }
