@@ -12,6 +12,10 @@ public class Vector2l extends AbsVector<Long, Vector2l> implements LongVector<Ve
 
     public Vector2l() {}
 
+    public Vector2l(long all) {
+        this(all, all);
+    }
+
     public Vector2l(Vector2l copy) {
         set(copy);
     }
