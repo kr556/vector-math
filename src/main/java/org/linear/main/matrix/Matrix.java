@@ -80,7 +80,7 @@ public interface Matrix<E extends Number, V extends Matrix<E, V, TRNS>, TRNS ext
     default Buffer get(Buffer pointer) {
         E[] es = toArray();
 
-        if (this instanceof VectorFunctions<?>) {
+        if (this instanceof VectorFunctions<?, ?>) {
             return ((VectorMatrix<E, ?>) this).toVector().get(pointer);
         } else {
             if (es[0] instanceof Float) {

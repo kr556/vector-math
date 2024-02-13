@@ -201,7 +201,7 @@ public class Vector4i extends AbsVector<Integer, Vector4i> implements IntVector<
     }
 
     @Override
-    public Vector4i nomalize() {
+    public Vector4i normalize() {
         double len = len();
         this.x /= (int) len;
         this.y /= (int) len;
@@ -211,9 +211,9 @@ public class Vector4i extends AbsVector<Integer, Vector4i> implements IntVector<
     }
 
     @Override
-    public Vector4i nomalize(Vector4i pointer) {
+    public Vector4i normalize(Vector4i pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override

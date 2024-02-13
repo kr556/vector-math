@@ -5,18 +5,12 @@ package org.linear.main;
  * @param <E> Basic element type.
  * @param <V> Type of implemented class.
  */
-public interface Arithmetic<E, V> {
+public interface Arithmetic<E extends Number, V extends Arithmetic<E, V>> extends Cloneable {
     /**
      * Assignment this instance.
      * @param copy right side.
      */
     void set(V copy);
-
-    /**
-     * Copy this.
-     * @return Obj deep copied of this.
-     */
-    V clone();
 
     /**
      * Add elements of an argument to corresponding elements of myself. This method can calculation same size of elements.
@@ -108,92 +102,4 @@ public interface Arithmetic<E, V> {
      * @return anser
      */
     V abs(V pointer);
-
-    /**
-     * Basically this method same to {@link Arithmetic#add(V)}. If the type V and the argument are not the same, this method will not work properly.
-     * If you want to do not rewrite myself, you can do calculation without rewrite myself going by use {@link Arithmetic#add(Arithmetic, Arithmetic)}.
-     * @param value Term of right
-     * @return anser
-     */
-    default V add(Arithmetic<E, V> value) {
-        return this.add(value.clone());
-    }
-
-    /**
-     * Basically this method same to {@link Arithmetic#add(V)}. If the type V and the argument are not the same, this method will not work properly.
-     * @param value Term of right
-     * @param pointer pointer
-     * @return anser
-     */
-    default V add(Arithmetic<E, V> value, Arithmetic<E, V> pointer) {
-        pointer.set(this.clone());
-
-        return pointer.add(value);
-    }
-
-    /**
-     * Basically this method same to {@link Arithmetic#sub(V)}. If the type V and the argument are not the same, this method will not work properly.
-     * If you want to do not rewrite myself, you can do calculation without rewrite myself going by use {@link Arithmetic#sub(Arithmetic, Arithmetic)}.
-     * @param value Term of right
-     * @return anser
-     */
-    default V sub(Arithmetic<E, V> value) {
-        return this.sub(value.clone());
-    }
-
-    /**
-     * Basically this method same to {@link Arithmetic#sub(V)}. If the type V and the argument are not the same, this method will not work properly.
-     * @param value Term of right
-     * @param pointer pointer
-     * @return anser
-     */
-    default V sub(Arithmetic<E, V> value, Arithmetic<E, V> pointer) {
-        pointer.set(this.clone());
-
-        return pointer.sub(value);
-    }
-
-    /**
-     * Basically this method same to {@link Arithmetic#mul(V)}. If the type V and the argument are not the same, this method will not work properly.
-     * If you want to do not rewrite myself, you can do calculation without rewrite myself going by use {@link Arithmetic#mul(Arithmetic, Arithmetic)}.
-     * @param value Term of right
-     * @return anser
-     */
-    default V mul(Arithmetic<E, V> value) {
-        return this.mul(value.clone());
-    }
-
-    /**
-     * Basically this method same to {@link Arithmetic#mul(V)}. If the type V and the argument are not the same, this method will not work properly.
-     * @param value Term of right
-     * @param pointer pointer
-     * @return anser
-     */
-    default V mul(Arithmetic<E, V> value, Arithmetic<E, V> pointer) {
-        pointer.set(this.clone());
-
-        return pointer.mul(value);
-    }
-
-    /**
-     * Basically this method same to {@link Arithmetic#div(V)}. If the type V and the argument are not the same, this method will not work properly.
-     * If you want to do not rewrite myself, you can do calculation without rewrite myself going by use {@link Arithmetic#div(Arithmetic, Arithmetic)}.
-     * @param value Term of right
-     * @return anser
-     */
-    default V div(Arithmetic<E, V> value) {
-        return this.div(value.clone());
-    }
-
-    /**
-     * Basically this method same to {@link Arithmetic#div(V)}. If the type V and the argument are not the same, this method will not work properly.
-     * @param value Term of right
-     * @param pointer pointer
-     * @return anser
-     */
-    default V div(Arithmetic<E, V> value, Arithmetic<E, V> pointer) {
-        pointer.set(this.clone());
-
-        return pointer.div(value);
-    }
 }

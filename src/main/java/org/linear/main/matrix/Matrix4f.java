@@ -663,7 +663,7 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
 
     public final Matrix4f rotate(final double radian, Vector4f axis) {
         if (axis.w != 0) throw new UnsupportedOperationException("axis element 'w' is not 0.");
-        axis.nomalize();
+        axis.normalize();
         final float c = (float) cos(radian);
         final float s = (float) sin(radian);
         final float ver = 1 - c;
@@ -825,7 +825,7 @@ public class Matrix4f extends SquareMatrix<Float, Matrix4f>
 
     public final Matrix4f setRotate(final double radian, Vector4f axis) {
         if (axis.w != 0) throw new UnsupportedOperationException("axis element 'w' is not 0.");
-        axis.nomalize();
+        axis.normalize();
         final float c = (float) cos(radian);
         final float s = (float) sin(radian);
         final float ver = 1 - c;

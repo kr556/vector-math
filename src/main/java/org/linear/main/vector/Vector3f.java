@@ -186,16 +186,16 @@ public class Vector3f extends AbsVector<Float, Vector3f> implements FloatVector<
     }
 
     @Override
-    public double cross(Vector3f value) {
-        return new Vector3f(
+    public Vector3f cross(Vector3f value) {
+        set(
                 this.y * value.z - this.z * value.y,
                 this.z * value.x - this.x * value.z,
-                this.x * value.y - this.y * value.x
-        ).len();
+                this.x * value.y - this.y * value.x);
+        return this;
     }
 
     @Override
-    public Vector3f nomalize() {
+    public Vector3f normalize() {
         double len = len();
         this.x /= (float) len;
         this.y /= (float) len;
@@ -204,9 +204,9 @@ public class Vector3f extends AbsVector<Float, Vector3f> implements FloatVector<
     }
 
     @Override
-    public Vector3f nomalize(Vector3f pointer) {
+    public Vector3f normalize(Vector3f pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override

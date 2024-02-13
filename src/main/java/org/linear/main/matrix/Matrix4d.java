@@ -706,7 +706,7 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
 
     public final Matrix4d rotate(final double radian, Vector4f axis) {
         if (axis.w != 0) throw new UnsupportedOperationException("axis element 'w' is not 0.");
-        axis.nomalize();
+        axis.normalize();
         final double c = cos(radian);
         final double s = sin(radian);
         final double ver = 1 - c;
@@ -868,7 +868,7 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
 
     public final Matrix4d setRotate(final double radian, Vector4f axis) {
         if (axis.w != 0) throw new UnsupportedOperationException("axis element 'w' is not 0.");
-        axis.nomalize();
+        axis.normalize();
         final double c = cos(radian);
         final double s = sin(radian);
         final double ver = 1 - c;

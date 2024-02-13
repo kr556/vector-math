@@ -203,7 +203,7 @@ public class Vector4f extends AbsVector<Float, Vector4f> implements FloatVector<
     }
 
     @Override
-    public Vector4f nomalize() {
+    public Vector4f normalize() {
         double len = len();
         this.x /= (float) len;
         this.y /= (float) len;
@@ -213,9 +213,9 @@ public class Vector4f extends AbsVector<Float, Vector4f> implements FloatVector<
     }
 
     @Override
-    public Vector4f nomalize(Vector4f pointer) {
+    public Vector4f normalize(Vector4f pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override

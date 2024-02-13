@@ -191,19 +191,12 @@ public class Vector2d extends AbsVector<Double, Vector2d> implements DoubleVecto
     }
 
     @Override
-    public double cross(Vector2d value) {
-        double theta = this.angle(value);
-
-        return this.len() * value.len() * sin(theta);
-    }
-
-    @Override
-    public Vector2d nomalize() {
+    public Vector2d normalize() {
         return null;
     }
 
     @Override
-    public Vector2d nomalize(Vector2d pointer) {
+    public Vector2d normalize(Vector2d pointer) {
         return null;
     }
 
