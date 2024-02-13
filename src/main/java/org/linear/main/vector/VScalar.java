@@ -46,7 +46,7 @@ public final class VScalar<E extends Number> extends AbsScalar<E> implements Vec
 
     @PropertiesMethod
     @Override
-    public final boolean isScalar() {
+    public boolean isScalar() {
         return true;
     }
 
@@ -55,9 +55,14 @@ public final class VScalar<E extends Number> extends AbsScalar<E> implements Vec
         return Objects.equals(value.x, this.x);
     }
 
+    @Override
+    public VScalar<E> clone() {
+        return new VScalar<>(x);
+    }
+
     // TODO: 2023/11/24
     @Override
-    public final boolean isNaN() {
+    public boolean isNaN() {
         return false;
     }
 
@@ -79,7 +84,7 @@ public final class VScalar<E extends Number> extends AbsScalar<E> implements Vec
     }
 
     @Override
-    public final int dimension() {
+    public int dimension() {
         return 1;
     }
 

@@ -40,7 +40,7 @@ public final class MScalar<E extends Number> extends Number implements Scalar<E>
 
     @PropertiesMethod
     @Override
-    public final boolean isScalar() {
+    public boolean isScalar() {
         return true;
     }
 
@@ -50,7 +50,7 @@ public final class MScalar<E extends Number> extends Number implements Scalar<E>
     }
 
     @Override
-    public final boolean isNaN() {
+    public boolean isNaN() {
         if (x instanceof Float) {
             return ((Float) x).isNaN();
         } else if (x instanceof Double) {
@@ -62,24 +62,34 @@ public final class MScalar<E extends Number> extends Number implements Scalar<E>
 
     @PropertiesMethod
     @Override
-    public final boolean isSquare() {
+    public boolean isSquare() {
         return true;
     }
 
     @Override
-    public MScalar<E> create() {
+    public int elementsSize() {
+        return 1;
+    }
+
+    @Override
+    public MScalar<E> clone() {
         return (MScalar<E>) new MScalar<>(0);
+    }
+
+    @Override
+    public MScalar<E> create() {
+        return new MScalar<>(x);
     }
 
     @PropertiesMethod
     @Override
-    public final int columnDimension() {
+    public int columnDimension() {
         return 1;
     }
 
     @PropertiesMethod
     @Override
-    public final int rowDimension() {
+    public int rowDimension() {
         return 1;
     }
 

@@ -115,17 +115,10 @@ public class Vector2f extends AbsVector<Float, Vector2f> implements FloatVector<
     }
 
     @Override
-    public Vector2f mul(float value) {
-        this.x *= value;
-        this.y *= value;
+    public Vector2f mul(double value) {
+        this.x *= (float) value;
+        this.y *= (float) value;
         return this;
-    }
-
-    @Override
-    public Vector2f mul(float value, Vector2f pointer) {
-        pointer.x = this.x * value;
-        pointer.y = this.y * value;
-        return pointer;
     }
 
     @Override
@@ -143,17 +136,10 @@ public class Vector2f extends AbsVector<Float, Vector2f> implements FloatVector<
     }
 
     @Override
-    public Vector2f div(float value) {
-        this.x /= value;
-        this.y /= value;
+    public Vector2f div(double value) {
+        this.x /= (float) value;
+        this.y /= (float) value;
         return this;
-    }
-
-    @Override
-    public Vector2f div(float value, Vector2f pointer) {
-        pointer.x = this.x / value;
-        pointer.y = this.y / value;
-        return pointer;
     }
 
     @Override

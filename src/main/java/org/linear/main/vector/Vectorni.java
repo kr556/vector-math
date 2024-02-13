@@ -116,7 +116,7 @@ public class Vectorni extends AbsVector<Integer, Vectorni> implements IntVector<
     }
 
     @Override
-    public Vectorni mul(float value) {
+    public Vectorni mul(double value) {
         for (int i = 0; i < v.length; i++) {
             this.v[i] = (int) (value * v[i]);
         }
@@ -125,12 +125,8 @@ public class Vectorni extends AbsVector<Integer, Vectorni> implements IntVector<
     }
 
     @Override
-    public Vectorni mul(float value, Vectorni pointer) {
-        for (int i = 0; i < v.length; i++) {
-            pointer.v[i] = (int) (this.v[i] * value);
-        }
-
-        return this;
+    public Vectorni mul(double value, Vectorni pointer) {
+        return null;
     }
 
     @Override
@@ -152,7 +148,7 @@ public class Vectorni extends AbsVector<Integer, Vectorni> implements IntVector<
     }
 
     @Override
-    public Vectorni div(float value) {
+    public Vectorni div(double value) {
         for (int i = 0; i < v.length; i++) {
             this.v[i] = (int) (value / v[i]);
         }
@@ -161,12 +157,8 @@ public class Vectorni extends AbsVector<Integer, Vectorni> implements IntVector<
     }
 
     @Override
-    public Vectorni div(float value, Vectorni pointer) {
-        for (int i = 0; i < v.length; i++) {
-            pointer.v[i] = (int) (this.v[i] / value);
-        }
-
-        return this;
+    public Vectorni div(double value, Vectorni pointer) {
+        return null;
     }
 
     @Override

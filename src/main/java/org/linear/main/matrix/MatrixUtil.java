@@ -5,24 +5,92 @@ import org.linear.main.vector.*;
 public class MatrixUtil {
     protected MatrixUtil() {}
 
+    public static double det2(double m00, double m01,
+                              double m10, double m11) {
+        return m00 * m11 - m01 * m11;
+    }
+
+    public static double det3(double m00, double m01, double m02,
+                              double m10, double m11, double m12,
+                              double m20, double m21, double m22) {
+        return m00 * m11 * m22 +
+               m01 * m12 * m20 +
+               m02 * m10 * m21 -
+               m02 * m11 * m20 -
+               m00 * m12 * m21 -
+               m01 * m10 * m22;
+    }
+
+    public static double det4(double m00, double m01, double m02, double m03,
+                              double m10, double m11, double m12, double m13,
+                              double m20, double m21, double m22, double m23,
+                              double m30, double m31, double m32, double m33) {
+        return (m00 * m11 - m01 * m10) * (m22 * m33 - m23 * m32)
+               - (m00 * m12 - m02 * m10) * (m21 * m33 - m23 * m31)
+               + (m00 * m13 - m03 * m10) * (m21 * m32 - m22 * m31)
+               + (m01 * m12 - m02 * m11) * (m20 * m33 - m23 * m30)
+               - (m01 * m13 - m03 * m11) * (m20 * m32 - m22 * m30)
+               + (m02 * m13 - m03 * m12) * (m20 * m31 - m21 * m30);
+    }
+
     public static Matrix2f diagonal2f() {
-        return Matrix2f.DIAGONAL.clone();
+        return Matrix2f.DIAGONAL.craete();
     }
 
     public static Matrix2d diagonal2d() {
-        return Matrix2d.DIAGONAL.clone();
+        return Matrix2d.DIAGONAL.craete();
     }
+
     public static Matrix3f diagonal3f() {
         return Matrix3f.DIAGONAL.clone();
     }
+
     public static Matrix3d diagonal3d() {
         return Matrix3d.DIAGONAL.clone();
     }
+
     public static Matrix4f diagonal4f() {
         return Matrix4f.DIAGONAL.clone();
     }
+
     public static Matrix4d diagonal4d() {
         return Matrix4d.DIAGONAL.clone();
+    }
+
+    public static Matrix2f create(float m00, float m01,
+                                  float m10, float m11) {
+        return new Matrix2f(m00, m01, m10, m11);
+    }
+
+    public static Matrix2d create(double m00, double m01,
+                                 double m10, double m11) {
+        return new Matrix2d(m00, m01, m10, m11);
+    }
+
+    public static Matrix3f create(float m00, float m01, float m02,
+                                  float m10, float m11, float m12,
+                                  float m20, float m21, float m22) {
+        return new Matrix3f(m00, m01, m02, m10, m11, m12, m20, m21, m22);
+    }
+
+    public static Matrix3d create(double m00, double m01, double m02,
+                                  double m10, double m11, double m12,
+                                  double m20, double m21, double m22) {
+        return new Matrix3d(m00, m01, m02, m10, m11, m12, m20, m21, m22);
+    }
+
+    public static Matrix4f create(float m00, float m01, float m02, float m03,
+                                  float m10, float m11, float m12, float m13,
+                                  float m20, float m21, float m22, float m23,
+                                  float m30, float m31, float m32, float m33) {
+        return new Matrix4f(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
+    }
+
+    public static Matrix4d create(double m00, double m01, double m02, double m03,
+                                  double m10, double m11, double m12, double m13,
+                                  double m20, double m21, double m22, double m23,
+                                  double m30, double m31, double m32, double m33) {
+        return new Matrix4d(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
     }
 
     public static Vector2f transformation(Matrix3f matrix, Vector2f vector) {
@@ -369,8 +437,8 @@ public class MatrixUtil {
     public static <E extends  Number,MAT extends AbsMatrix<E,MAT, MAT >, VEC extends AbsVector<E, VEC>> VEC transformation(MAT matrix, VEC vector) {
         if (matrix instanceof SquareMatrix<?,?>) {
             if (matrix.rowDimension() == vector.dimension()) {
-                MAT mTmp = matrix.create();
-                MAT mAns = matrix.clone();
+                MAT mTmp = matrix.craete();
+                MAT mAns = matrix.craete();
 
                 mTmp.map((r, c) -> vector.get(r));
 
@@ -379,19 +447,17 @@ public class MatrixUtil {
                 vector.map(i -> mAns.get(mAns.posToIndex(i, 0)));
 
                 return vector;
-            } else {
-                throw new UnsupportedOperationException();
             }
-        } else {
-            throw new UnsupportedOperationException();
         }
+
+        throw new UnsupportedOperationException(" : The matrix is not square.");
     }
 
     public static <E extends  Number,MAT extends AbsMatrix<E,MAT, MAT>, VEC extends AbsVector<E, VEC>> VEC transformation(MAT matrix, VEC vector, VEC pointer) {
         if (matrix instanceof SquareMatrix<?,?>) {
             if (matrix.rowDimension() - 1 == vector.dimension()) {
-                MAT mTmp = (matrix).create();
-                MAT mAns = (matrix).clone();
+                MAT mTmp = (matrix).craete();
+                MAT mAns = (matrix).craete();
 
                 mTmp.map((r, c) -> vector.get(r));
 
@@ -400,7 +466,9 @@ public class MatrixUtil {
                 pointer.map(i -> mAns.get(mAns.posToIndex(i, 0)));
 
                 return pointer;
-            } else throw new UnsupportedOperationException("the matrix not square");
-        } else throw new UnsupportedOperationException();
+            }
+        }
+
+        throw new UnsupportedOperationException(" : The matrix is not square.");
     }
 }

@@ -70,7 +70,7 @@ public class Matrix3d extends SquareMatrix<Double, Matrix3d>
     }
 
     @Override
-    public Matrix3d clone() {
+    public Matrix3d craete() {
         return new Matrix3d(this);
     }
 
@@ -267,30 +267,18 @@ public class Matrix3d extends SquareMatrix<Double, Matrix3d>
 
     @Override
     public Matrix3d transpose() {
-        final double m12 = this.m10;
-        final double m13 = this.m20;
-        final double m21 = this.m01;
-        final double m23 = this.m21;
-        final double m31 = this.m02;
-        final double m32 = this.m12;
-        this.m01 = m12;
-        this.m02 = m13;
-        this.m10 = m21;
-        this.m12 = m23;
-        this.m20 = m31;
-        this.m21 = m32;
-        return this;
-    }
+        double tmp = m01;
+        m01 = m10;
+        m10 = tmp;
 
-    @Override
-    public Matrix3d transpose(Matrix3d pointer) {
-        pointer.m01 = m10;
-        pointer.m02 = m20;
-        pointer.m10 = m01;
-        pointer.m12 = m21;
-        pointer.m20 = m02;
-        pointer.m21 = m12;
-        return pointer;
+        tmp = m02;
+        m02 = m20;
+        m20 = tmp;
+
+        tmp = m12;
+        m12 = m21;
+        m21 = tmp;
+        return this;
     }
 
     public final Matrix3d mulC(double m00, double m01, double m02,
@@ -458,29 +446,22 @@ public class Matrix3d extends SquareMatrix<Double, Matrix3d>
         pointer[0] = this.m00;
         pointer[1] = this.m01;
         pointer[2] = this.m02;
-        pointer[4] = this.m10;
-        pointer[5] = this.m11;
-        pointer[6] = this.m12;
-        pointer[8] = this.m20;
-        pointer[9] = this.m21;
-        pointer[10] = this.m22;
+        pointer[3] = this.m10;
+        pointer[4] = this.m11;
+        pointer[5] = this.m12;
+        pointer[6] = this.m20;
+        pointer[7] = this.m21;
+        pointer[8] = this.m22;
         return pointer;
     }
 
     @Override
-    public Matrix3d invert() {
-        double det = determinant();
-        if (det != 0) {
-            set(
-                    m11 * m22 - m12 * m21, m02 * m21 - m01 * m22, m01 * m12 - m02 * m11,
-                    m12 * m20 - m10 * m22, m00 * m22 - m02 * m20, m02 * m10 - m00 * m12,
-                    m10 * m21 - m11 * m20, m01 * m20 - m00 * m21, m00 * m11 - m01 * m10
-            );
-
-            return this.mul(1 / det);
-        }
-
-        return null;
+    public Matrix3d cofactor() {
+        set(
+                m11 * m22 - m12 * m21, m02 * m21 - m01 * m22, m01 * m12 - m02 * m11,
+                m12 * m20 - m10 * m22, m00 * m22 - m02 * m20, m02 * m10 - m00 * m12,
+                m10 * m21 - m11 * m20, m01 * m20 - m00 * m21, m00 * m11 - m01 * m10);
+        return this;
     }
 
     @Override

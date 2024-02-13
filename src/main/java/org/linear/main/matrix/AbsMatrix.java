@@ -4,9 +4,8 @@ import org.linear.main.vector.AbsVector;
 import org.liner.annotation.PropertiesMethod;
 import org.linear.main.Arithmetic;
 
-public abstract class AbsMatrix<E extends Number, V extends Matrix<E, V, TRNS>, TRNS extends Matrix<E, TRNS, V>>
+public abstract class AbsMatrix<E extends Number, V extends AbsMatrix<E, V, TRNS>, TRNS extends AbsMatrix<E, TRNS, V>>
         implements Matrix<E, V, TRNS>, Arithmetic<E, V>, MatrixFunctions<E, V, TRNS> {
-
     public AbsMatrix() {}
 
     public AbsMatrix(V copy) {
@@ -15,10 +14,40 @@ public abstract class AbsMatrix<E extends Number, V extends Matrix<E, V, TRNS>, 
         }
     }
 
-    public abstract V clone();
+    /**
+     * Creating new instance. Useing default constracter.
+     * @return Same type new empty instance.
+     */
+    public abstract V craete();
+
+    public V clone() {
+        V re = create();
+        re.set((V) this);
+        return re;
+    }
 
     int posToIndex(int r, int c) {
         return r * rowDimension() + c;
+    }
+
+    public V map(MatrixElementMapper<E> map) {
+        for (int r = 0; r < columnDimension(); r++) {
+            for (int c = 0; c < rowDimension(); c++) {
+                set(r, c, map.set(r, c, get(posToIndex(r, c))));
+            }
+        }
+
+        return (V) this;
+    }
+
+    public V map(MatrixMapper<E> map) {
+        for (int r = 0; r < columnDimension(); r++) {
+            for (int c = 0; c < rowDimension(); c++) {
+                set(r, c, map.set(r, c));
+            }
+        }
+
+        return (V) this;
     }
 
     @Override

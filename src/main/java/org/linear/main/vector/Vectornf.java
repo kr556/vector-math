@@ -117,21 +117,12 @@ public class Vectornf extends AbsVector<Float, Vectornf> implements FloatVector<
     }
 
     @Override
-    public Vectornf mul(float value) {
+    public Vectornf mul(double value) {
         for (int i = 0; i < v.length; i++) {
-            this.v[i] *= value;
+            this.v[i] *= (float) value;
         }
 
         return this;
-    }
-
-    @Override
-    public Vectornf mul(float value, Vectornf pointer) {
-        for (int i = 0; i < v.length; i++) {
-            pointer.v[i] = this.v[i] * value;
-        }
-
-        return pointer;
     }
 
     @Override
@@ -153,21 +144,12 @@ public class Vectornf extends AbsVector<Float, Vectornf> implements FloatVector<
     }
 
     @Override
-    public Vectornf div(float value) {
+    public Vectornf div(double value) {
         for (int i = 0; i < v.length; i++) {
-            this.v[i] /= value;
+            this.v[i] /= (float) value;
         }
 
         return this;
-    }
-
-    @Override
-    public Vectornf div(float value, Vectornf pointer) {
-        for (int i = 0; i < v.length; i++) {
-            pointer.v[i] = this.v[i] / value;
-        }
-
-        return pointer;
     }
 
     @Override

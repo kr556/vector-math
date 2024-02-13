@@ -1,9 +1,16 @@
 package org.linear.main.matrix;
 
-public interface MatrixFunctions<E extends Number, V, TRNS> {
+import org.linear.main.Arithmetic;
+import org.linear.main.Linear;
+
+public interface MatrixFunctions<E extends Number, V extends MatrixFunctions<E, V, TRNS>, TRNS extends MatrixFunctions<E, TRNS, V>>
+        extends Linear<E, V>, Arithmetic<E, V> {
     E get(int r, int c);
 
     TRNS transpose();
 
-    TRNS transpose(TRNS pointer);
+    default TRNS transpose(TRNS pointer) {
+        pointer.set((TRNS) this);
+        return (TRNS) pointer.transpose();
+    }
 }

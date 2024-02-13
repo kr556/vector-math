@@ -17,9 +17,29 @@ public interface Matrix<E extends Number, V extends Matrix<E, V, TRNS>, TRNS ext
         extends Linear<E, V> {
     V create();
 
+    /**
+     * Get dimension of a column of this matrix.
+     * For example, its matrix a column dimension is 3.
+     * <pre>
+     *     [C00, C01]
+     *     [C10, C11]
+     *     [C20, C21]
+     * </pre>
+     * @return A column dimension.
+     */
     @PropertiesMethod
     int columnDimension();
 
+    /**
+     * Get dimension of a row of this matrix.
+     * For example, its matrix a row dimension is 2.
+     * <pre>
+     *     [C00, C01]
+     *     [C10, C11]
+     *     [C20, C21]
+     * </pre>
+     * @return A row dimension.
+     */
     @PropertiesMethod
     int rowDimension();
 
@@ -41,9 +61,7 @@ public interface Matrix<E extends Number, V extends Matrix<E, V, TRNS>, TRNS ext
     }
 
     @PropertiesMethod
-    default int elementsSize() {
-        return columnDimension() * rowDimension();
-    }
+    int elementsSize();
 
     @Final
     @Override
@@ -88,18 +106,13 @@ public interface Matrix<E extends Number, V extends Matrix<E, V, TRNS>, TRNS ext
         set(rows, index - rowDimension() * rows, value);
     }
 
-    default void map(MatrixForEach<E> map) {
-        if (map == null) return;
-
-        for (int r = 0; r < columnDimension(); r++) {
-            for (int c = 0; c < rowDimension(); c++) {
-                set(r, c, map.set(r, c));
-            }
-        }
+    @FunctionalInterface
+    interface MatrixElementMapper<E> {
+        E set(int row, int column, E element);
     }
 
     @FunctionalInterface
-    interface MatrixForEach<E> {
-        E set(int r, int c);
+    interface MatrixMapper<E> {
+        E set(int row, int column);
     }
 }

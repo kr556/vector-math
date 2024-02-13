@@ -60,6 +60,14 @@ public interface Arithmetic<E, V> {
      */
     V mul(V value);
 
+    V mul(double value);
+
+    V mul(double value, V pointer);
+
+    V div(double value);
+
+    V div(double value, V pointer);
+    
     /**
      * Mul elements of an argument to corresponding elements of myself.
      * Becouse, this method can calculation same size of elements.
