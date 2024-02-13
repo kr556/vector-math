@@ -1,5 +1,6 @@
 package org.linear.main.matrix;
 
+import org.linear.main.Arithmetic;
 import org.linear.main.vector.Vector;
 import org.linear.main.vector.VectorFunctions;
 import org.liner.annotation.PropertiesMethod;
@@ -9,9 +10,9 @@ import org.liner.annotation.PropertiesMethod;
  * that implements this interface implements {@link VectorFunctions}.
  * @param <V> Type of vector converted from matrix.
  */
-public abstract class ColumnVector<E extends Number, V extends Vector<E, V>>
+public abstract class ColumnVector<E extends Number, V extends Vector<E, V> & Arithmetic<E, V> & VectorFunctions<E, V>>
         extends AbsMatrix<E, ColumnVector<E, V>, VectorMatrix<E, V>>
-        implements VectorFunctions<V> {
+        implements VectorFunctions<E, V> {
     @PropertiesMethod
     @Override
     public final boolean isVector() {

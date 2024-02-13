@@ -198,15 +198,15 @@ public class Vectornf extends AbsVector<Float, Vectornf> implements FloatVector<
     }
 
     @Override
-    public Vectornf nomalize() {
+    public Vectornf normalize() {
         div((float) len());
         return this;
     }
 
     @Override
-    public Vectornf nomalize(Vectornf pointer) {
+    public Vectornf normalize(Vectornf pointer) {
         pointer.set(this);
-        pointer.nomalize();
+        pointer.normalize();
         return pointer;
     }
 

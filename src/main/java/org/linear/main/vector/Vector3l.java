@@ -196,16 +196,16 @@ public class Vector3l extends AbsVector<Long, Vector3l> implements LongVector<Ve
     }
 
     @Override
-    public double cross(Vector3l value) {
-        return new Vector3l(
+    public Vector3l cross(Vector3l value) {
+        set(
                 this.y * value.z - this.z * value.y,
                 this.z * value.x - this.x * value.z,
-                this.x * value.y - this.y * value.x
-        ).len();
+                this.x * value.y - this.y * value.x);
+        return this;
     }
 
     @Override
-    public Vector3l nomalize() {
+    public Vector3l normalize() {
         double len = len();
         this.x /= (long) len;
         this.y /= (long) len;
@@ -214,9 +214,9 @@ public class Vector3l extends AbsVector<Long, Vector3l> implements LongVector<Ve
     }
 
     @Override
-    public Vector3l nomalize(Vector3l pointer) {
+    public Vector3l normalize(Vector3l pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override

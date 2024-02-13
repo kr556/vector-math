@@ -4,7 +4,7 @@ import org.linear.main.Arithmetic;
 import org.liner.annotation.PropertiesMethod;
 
 public abstract class AbsVector<E extends Number, V extends AbsVector<E, V>>
-        implements Vector<E, V>, VectorFunctions<V>, Arithmetic<E, V> {
+        implements Vector<E, V>, VectorFunctions<E, V>, Arithmetic<E, V> {
     public AbsVector() {}
 
     @Override

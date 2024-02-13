@@ -1,6 +1,8 @@
 package org.linear.main.vector;
 
-public interface VectorFunctions<V extends Vector<?, ?>> {
+import org.linear.main.Arithmetic;
+
+public interface VectorFunctions<E extends Number, V extends Vector<E, V> & Arithmetic<E, V> & VectorFunctions<E, V>> {
     double distance(V value);
 
     double len();
@@ -9,11 +11,16 @@ public interface VectorFunctions<V extends Vector<?, ?>> {
 
     double dot(V value);
 
-    default double cross(V value) {
-        return Double.NaN;
+    default V cross(V value) {
+        throw new UnsupportedOperationException();
     }
 
-    V nomalize();
+    default V cross(V value, V pointer) {
+        pointer.set((V) this);
+        return pointer.cross(value);
+    }
 
-    V nomalize(V pointer);
+    V normalize();
+
+    V normalize(V pointer);
 }

@@ -183,16 +183,16 @@ public class Vector3i extends AbsVector<Integer, Vector3i> implements IntVector<
     }
 
     @Override
-    public double cross(Vector3i value) {
-        return new Vector3i(
+    public Vector3i cross(Vector3i value) {
+        set(
                 this.y * value.z - this.z * value.y,
                 this.z * value.x - this.x * value.z,
-                this.x * value.y - this.y * value.x
-        ).len();
+                this.x * value.y - this.y * value.x);
+        return this;
     }
 
     @Override
-    public Vector3i nomalize() {
+    public Vector3i normalize() {
         double len = len();
         this.x /= (int) len;
         this.y /= (int) len;
@@ -201,9 +201,9 @@ public class Vector3i extends AbsVector<Integer, Vector3i> implements IntVector<
     }
 
     @Override
-    public Vector3i nomalize(Vector3i pointer) {
+    public Vector3i normalize(Vector3i pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override

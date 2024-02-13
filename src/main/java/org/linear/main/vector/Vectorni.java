@@ -207,15 +207,15 @@ public class Vectorni extends AbsVector<Integer, Vectorni> implements IntVector<
     }
 
     @Override
-    public Vectorni nomalize() {
+    public Vectorni normalize() {
         div((float) len());
         return this;
     }
 
     @Override
-    public Vectorni nomalize(Vectorni pointer) {
+    public Vectorni normalize(Vectorni pointer) {
         pointer.set(this);
-        pointer.nomalize();
+        pointer.normalize();
         return pointer;
     }
 

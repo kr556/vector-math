@@ -212,12 +212,7 @@ public class Vector2l extends AbsVector<Long, Vector2l> implements LongVector<Ve
     }
 
     @Override
-    public double cross(Vector2l value) {
-        return new Vector2d(0, this.len() * value.len() * Math.sin(this.angle(value))).len();
-    }
-
-    @Override
-    public Vector2l nomalize() {
+    public Vector2l normalize() {
         double len = len();
         this.x /= (int) len;
         this.y /= (int) len;
@@ -225,9 +220,9 @@ public class Vector2l extends AbsVector<Long, Vector2l> implements LongVector<Ve
     }
 
     @Override
-    public Vector2l nomalize(Vector2l pointer) {
+    public Vector2l normalize(Vector2l pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override

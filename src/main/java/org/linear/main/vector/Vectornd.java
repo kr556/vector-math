@@ -243,17 +243,17 @@ public class Vectornd extends AbsVector<Double, Vectornd> implements DoubleVecto
     }
 
     @Override
-    public Vectornd nomalize() {
+    public Vectornd normalize() {
         div((float) len());
         return this;
     }
 
     @Override
-    public Vectornd nomalize(Vectornd pointer) {
+    public Vectornd normalize(Vectornd pointer) {
         if (this.dim != pointer.dim) throw new ArrayIndexOutOfBoundsException();
 
         pointer.set(this);
-        pointer.nomalize();
+        pointer.normalize();
         return pointer;
     }
 

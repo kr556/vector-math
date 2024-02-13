@@ -213,7 +213,7 @@ public class Vector4l extends AbsVector<Long, Vector4l> implements LongVector<Ve
     }
 
     @Override
-    public Vector4l nomalize() {
+    public Vector4l normalize() {
         double len = len();
         this.x /= (long) len;
         this.y /= (long) len;
@@ -223,9 +223,9 @@ public class Vector4l extends AbsVector<Long, Vector4l> implements LongVector<Ve
     }
 
     @Override
-    public Vector4l nomalize(Vector4l pointer) {
+    public Vector4l normalize(Vector4l pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override

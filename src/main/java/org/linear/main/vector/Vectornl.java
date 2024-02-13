@@ -216,15 +216,15 @@ public class Vectornl extends AbsVector<Long, Vectornl> implements LongVector<Ve
     }
 
     @Override
-    public Vectornl nomalize() {
+    public Vectornl normalize() {
         div(len());
         return this;
     }
 
     @Override
-    public Vectornl nomalize(Vectornl pointer) {
+    public Vectornl normalize(Vectornl pointer) {
         pointer.set();
-        pointer.nomalize();
+        pointer.normalize();
         return pointer;
     }
 

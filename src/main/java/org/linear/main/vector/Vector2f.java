@@ -178,17 +178,12 @@ public class Vector2f extends AbsVector<Float, Vector2f> implements FloatVector<
     }
 
     @Override
-    public double cross(Vector2f value) {
-        return new Vector2f(0, (float) (this.len() * value.len() * Math.sin(this.angle(value)))).len();
-    }
-
-    @Override
-    public Vector2f nomalize() {
+    public Vector2f normalize() {
         return null;
     }
 
     @Override
-    public Vector2f nomalize(Vector2f pointer) {
+    public Vector2f normalize(Vector2f pointer) {
         return null;
     }
 

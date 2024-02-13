@@ -188,12 +188,7 @@ public class Vector2i extends AbsVector<Integer, Vector2i> implements IntVector<
     }
 
     @Override
-    public double cross(Vector2i value) {
-        return new Vector2d(0, this.len() * value.len() * Math.sin(this.angle(value))).len();
-    }
-
-    @Override
-    public Vector2i nomalize() {
+    public Vector2i normalize() {
         double len = len();
         this.x /= (int) len;
         this.y /= (int) len;
@@ -201,9 +196,9 @@ public class Vector2i extends AbsVector<Integer, Vector2i> implements IntVector<
     }
 
     @Override
-    public Vector2i nomalize(Vector2i pointer) {
+    public Vector2i normalize(Vector2i pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override

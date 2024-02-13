@@ -198,16 +198,16 @@ public class Vector3d extends AbsVector<Double, Vector3d> implements DoubleVecto
     }
 
     @Override
-    public double cross(Vector3d value) {
-        return new Vector3d(
+    public Vector3d cross(Vector3d value) {
+        set(
                 this.y * value.z - this.z * value.y,
                 this.z * value.x - this.x * value.z,
-                this.x * value.y - this.y * value.x
-        ).len();
+                this.x * value.y - this.y * value.x);
+        return this;
     }
 
     @Override
-    public Vector3d nomalize() {
+    public Vector3d normalize() {
         double len = len();
         this.x /= len;
         this.y /= len;
@@ -216,9 +216,9 @@ public class Vector3d extends AbsVector<Double, Vector3d> implements DoubleVecto
     }
 
     @Override
-    public Vector3d nomalize(Vector3d pointer) {
+    public Vector3d normalize(Vector3d pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override

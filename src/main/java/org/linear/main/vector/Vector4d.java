@@ -215,7 +215,7 @@ public class Vector4d extends AbsVector<Double, Vector4d> implements DoubleVecto
     }
 
     @Override
-    public Vector4d nomalize() {
+    public Vector4d normalize() {
         double len = len();
         this.x /= len;
         this.y /= len;
@@ -225,9 +225,9 @@ public class Vector4d extends AbsVector<Double, Vector4d> implements DoubleVecto
     }
 
     @Override
-    public Vector4d nomalize(Vector4d pointer) {
+    public Vector4d normalize(Vector4d pointer) {
         pointer.set(this);
-        return pointer.nomalize();
+        return pointer.normalize();
     }
 
     @Override
