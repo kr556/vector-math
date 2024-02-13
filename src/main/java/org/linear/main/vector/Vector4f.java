@@ -14,6 +14,10 @@ public class Vector4f extends AbsVector<Float, Vector4f> implements FloatVector<
 
     public Vector4f() {}
 
+    public Vector4f(float all) {
+        this(all, all, all, all);
+    }
+
     public Vector4f(Vector4f copy) {
         set(copy);
     }

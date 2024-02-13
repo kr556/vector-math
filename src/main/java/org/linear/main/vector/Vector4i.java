@@ -12,6 +12,10 @@ public class Vector4i extends AbsVector<Integer, Vector4i> implements IntVector<
 
     public Vector4i() {}
 
+    public Vector4i(int all) {
+        this(all, all, all, all);
+    }
+
     public Vector4i(Vector4i copy) {
         set(copy);
     }
