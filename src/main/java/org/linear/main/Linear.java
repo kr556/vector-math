@@ -21,4 +21,7 @@ public non-sealed interface Linear<E extends Number, V extends Linear<E, V>>
    
    @Final
    boolean isNaN();
+
+   @PropertiesMethod
+   int elementsSize();
 }

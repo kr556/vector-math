@@ -18,4 +18,9 @@ public interface Vector<E extends Number, V extends Vector<E, V>>
     interface VectorForEach<E> {
         E set(int i);
     }
+
+    @Override
+    default int elementsSize() {
+        return dimension();
+    }
 }
