@@ -1,39 +1,35 @@
 package org.linear.main.vector;
 
 import org.jetbrains.annotations.NotNull;
-import org.linear.main.value.DoubleValue;
+import org.linear.main.value.LongValue;
 
 import java.nio.Buffer;
-import java.nio.DoubleBuffer;
+import java.nio.LongBuffer;
 
-public class Vector2Funcd extends FunctionVector.DoubleFunctionVector<Vector2Funcd, Vector2d> {
-    public static final Vector2Funcd NAN = new Vector2Funcd(
-            () -> Double.NaN,
-            () -> Double.NaN);
+public class Vector2Funcl extends FunctionVector.LongFunctionVector<Vector2Funcl, Vector2l> {
+    public LongValue x, y;
 
-    public DoubleValue x, y;
+    public Vector2Funcl() {}
 
-    public Vector2Funcd() {}
-
-    public Vector2Funcd(Vector2d applyToFunc) {
+    public Vector2Funcl(Vector2l applyToFunc) {
         this(() -> applyToFunc.x, () -> applyToFunc.y);
     }
 
-    public Vector2Funcd(DoubleValue all) {
+    public Vector2Funcl(LongValue all) {
         this(all, all);
     }
 
-    public Vector2Funcd(Vector2Funcd copy) {
+    public Vector2Funcl(Vector2Funcl copy) {
         set(copy);
     }
 
-    public Vector2Funcd(DoubleValue x, DoubleValue y) {
+    public Vector2Funcl(LongValue x, LongValue y) {
         this.x = x;
         this.y = y;
     }
 
     @Override
-    public Double get(int index) {
+    public Long get(int index) {
         return switch (index) {
             case 0 -> x.val();
             case 1 -> y.val();
@@ -42,7 +38,7 @@ public class Vector2Funcd extends FunctionVector.DoubleFunctionVector<Vector2Fun
     }
 
     @Override
-    public void set(int index, @NotNull Double value) {
+    public void set(int index, @NotNull Long value) {
         switch (index) {
             case 0 -> this.x = () -> value;
             case 1 -> this.y = () -> value;
@@ -56,14 +52,14 @@ public class Vector2Funcd extends FunctionVector.DoubleFunctionVector<Vector2Fun
     }
 
     @Override
-    public boolean equals(@NotNull Vector2Funcd value) {
+    public boolean equals(@NotNull Vector2Funcl value) {
         return (this.x.val() == value.x.val() &&
                 this.y.val() == value.y.val());
     }
 
     @Override
     public final boolean isNaN() {
-        return Double.isNaN(x.val()) && Double.isNaN(y.val());
+        return false;
     }
 
     @Override
@@ -72,7 +68,7 @@ public class Vector2Funcd extends FunctionVector.DoubleFunctionVector<Vector2Fun
     }
 
     @Override
-    public double distance(Vector2Funcd value) {
+    public double distance(Vector2Funcl value) {
         return VectorUtils.distance(x.val(), value.x.val(), y.val(), value.y.val());
     }
 
@@ -82,91 +78,91 @@ public class Vector2Funcd extends FunctionVector.DoubleFunctionVector<Vector2Fun
     }
 
     @Override
-    public double angle(Vector2Funcd value) {
+    public double angle(Vector2Funcl value) {
         return VectorUtils.angle(x.val(), value.x.val(), y.val(), value.y.val());
     }
 
     @Override
-    public double dot(Vector2Funcd value) {
+    public double dot(Vector2Funcl value) {
         return VectorUtils.dot(x.val(), value.x.val(), y.val(), value.y.val());
     }
 
     @Override
-    public Vector2Funcd normalize() {
+    public Vector2Funcl normalize() {
         final double l = len();
-        DoubleValue fx = this.x;
-        DoubleValue fy = this.y;
-        this.x = () -> fx.val() / l;
-        this.y = () -> fy.val() / l;
+        LongValue fx = this.x;
+        LongValue fy = this.y;
+        this.x = () -> (long) (fx.val() / l);
+        this.y = () -> (long) (fy.val() / l);
         return this;
     }
 
     @Override
-    public Vector2Funcd normalize(Vector2Funcd pointer) {
+    public Vector2Funcl normalize(Vector2Funcl pointer) {
         final double l = len();
         pointer.set(
-                () -> this.x.val() / l,
-                () -> this.y.val() / l);
+                () -> (long) (this.x.val() / l),
+                () -> (long) (this.y.val() / l));
         return pointer;
     }
 
     @Override
     public Buffer get(Buffer pointer) {
-        ((DoubleBuffer) pointer).put(0, this.x.val());
-        ((DoubleBuffer) pointer).put(1, this.y.val());
+        ((LongBuffer) pointer).put(0, this.x.val());
+        ((LongBuffer) pointer).put(1, this.y.val());
         return pointer;
     }
 
     @Override
-    public Double[] toArray(Double[] pointer) {
+    public Long[] toArray(Long[] pointer) {
         pointer[0] = this.x.val();
         pointer[1] = this.y.val();
         return pointer;
     }
 
-    public void set(DoubleValue x, DoubleValue y) {
+    public void set(LongValue x, LongValue y) {
         this.x = x;
         this.y = y;
     }
 
     @Override
-    public Double[] toArray() {
-        return new Double[]{
+    public Long[] toArray() {
+        return new Long[]{
                 this.x.val(),
                 this.y.val()};
     }
 
     @Override
-    public void set(Vector2Funcd copy) {
+    public void set(Vector2Funcl copy) {
         this.x = copy.x;
         this.y = copy.y;
     }
 
     @Override
-    public Vector2Funcd clone() {
-        return new Vector2Funcd(this);
+    public Vector2Funcl clone() {
+        return new Vector2Funcl(this);
     }
 
     @Override
-    public double[] toArray(double[] pointer) {
+    public long[] toArray(long[] pointer) {
         pointer[0] = this.x.val();
         pointer[1] = this.y.val();
         return pointer;
     }
 
     @Override
-    public Vector2d createPrimitive() {
-        return new Vector2d(x.val(), y.val());
+    public Vector2l createPrimitive() {
+        return new Vector2l(x.val(), y.val());
     }
 
     @Override
-    public Vector2d toPrimitive(Vector2d pointer) {
+    public Vector2l toPrimitive(Vector2l pointer) {
         pointer.set(x.val(), y.val());
         return pointer;
     }
 
     @Override
-    public DoubleValue[] toFunctionArray(DoubleValue[] pointer) {
+    public LongValue[] toFunctionArray(LongValue[] pointer) {
         pointer[0] = x;
         pointer[1] = y;
         return pointer;
