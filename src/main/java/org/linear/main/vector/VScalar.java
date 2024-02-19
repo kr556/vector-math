@@ -1,6 +1,7 @@
 package org.linear.main.vector;
 
 import org.jetbrains.annotations.NotNull;
+import org.linear.main.matrix.MScalar;
 import org.liner.annotation.PropertiesMethod;
 import org.linear.main.AbsScalar;
 import org.linear.main.Scalar;
@@ -13,6 +14,11 @@ public final class VScalar<E extends Number> extends AbsScalar<E> implements Vec
 
     public VScalar(E value) {
         this.x = value;
+    }
+
+    @Override
+    public void set(VScalar<E> copy) {
+        this.x = copy.x;
     }
 
     @Override

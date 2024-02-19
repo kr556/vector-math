@@ -7,7 +7,7 @@ import java.nio.DoubleBuffer;
 
 import static java.lang.Math.*;
 
-public class Vector4f extends AbsVector<Float, Vector4f> implements FloatVector<Vector4f> {
+public class Vector4f extends PrimitiveVector<Float, Vector4f> implements FloatVector<Vector4f> {
     public float x, y, z, w;
 
     public static final Vector4f NAN = new Vector4f(Float.NaN, Float.NaN, Float.NaN, Float.NaN);

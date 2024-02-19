@@ -3,9 +3,9 @@ package org.linear.main.vector;
 import org.linear.main.Arithmetic;
 import org.liner.annotation.PropertiesMethod;
 
-public abstract class AbsVector<E extends Number, V extends AbsVector<E, V>>
+public abstract class PrimitiveVector<E extends Number, V extends PrimitiveVector<E, V>>
         implements Vector<E, V>, VectorFunctions<E, V>, Arithmetic<E, V> {
-    public AbsVector() {}
+    public PrimitiveVector() {}
 
     @Override
     public V mul(V value, V pointer) {
@@ -55,7 +55,7 @@ public abstract class AbsVector<E extends Number, V extends AbsVector<E, V>>
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
-        if (!(obj instanceof AbsVector<?,?>)) return false;
+        if (!(obj instanceof PrimitiveVector<?,?>)) return false;
         return this.equals((V)obj);
     }
 }

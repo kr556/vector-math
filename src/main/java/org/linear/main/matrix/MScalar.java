@@ -38,6 +38,11 @@ public final class MScalar<E extends Number> extends Number implements Scalar<E>
         return (E[]) new Number[]{x};
     }
 
+    @Override
+    public void set(MScalar<E> copy) {
+        this.x = copy.x;
+    }
+
     @PropertiesMethod
     @Override
     public boolean isScalar() {

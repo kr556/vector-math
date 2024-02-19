@@ -2,7 +2,7 @@ package org.linear.main.vector;
 
 import org.linear.main.Arithmetic;
 
-public interface VectorFunctions<E extends Number, V extends Vector<E, V> & Arithmetic<E, V> & VectorFunctions<E, V>> {
+public interface VectorFunctions<E extends Number, V extends Vector<E, V> & VectorFunctions<E, V>> {
     double distance(V value);
 
     double len();

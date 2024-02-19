@@ -1,14 +1,14 @@
 package org.linear.main.matrix;
 
-import org.linear.main.vector.AbsVector;
+import org.linear.main.vector.PrimitiveVector;
 import org.liner.annotation.PropertiesMethod;
 import org.linear.main.Arithmetic;
 
-public abstract class AbsMatrix<E extends Number, V extends AbsMatrix<E, V, TRNS>, TRNS extends AbsMatrix<E, TRNS, V>>
+public abstract class PrimitiveMatrix<E extends Number, V extends PrimitiveMatrix<E, V, TRNS>, TRNS extends PrimitiveMatrix<E, TRNS, V>>
         implements Matrix<E, V, TRNS>, Arithmetic<E, V>, MatrixFunctions<E, V, TRNS> {
-    public AbsMatrix() {}
+    public PrimitiveMatrix() {}
 
-    public AbsMatrix(V copy) {
+    public PrimitiveMatrix(V copy) {
         if (copy != null) {
             this.set(copy);
         }
@@ -106,7 +106,7 @@ public abstract class AbsMatrix<E extends Number, V extends AbsMatrix<E, V, TRNS
     public boolean equals(Object obj) {
         if (obj == null) return false;
         if (obj == this) return true;
-        if (!(obj instanceof AbsVector<?,?>)) return false;
+        if (!(obj instanceof PrimitiveVector<?,?>)) return false;
         return this.equals((V)obj);
     }
 

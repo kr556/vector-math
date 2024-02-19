@@ -8,7 +8,7 @@ import java.nio.FloatBuffer;
 import static java.lang.Math.cos;
 import static java.lang.Math.sqrt;
 
-public class Vector2f extends AbsVector<Float, Vector2f> implements FloatVector<Vector2f> {
+public class Vector2f extends PrimitiveVector<Float, Vector2f> implements FloatVector<Vector2f> {
     public static final Vector2f NAN = new Vector2f(Float.NaN, Float.NaN);
 
     public float x, y;

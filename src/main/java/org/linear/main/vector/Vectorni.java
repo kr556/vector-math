@@ -11,7 +11,7 @@ import static java.lang.Math.*;
 
 // TODO: 2023/12/03 実装
 // FIXME: 2023/12/03 最適化
-public class Vectorni extends AbsVector<Integer, Vectorni> implements IntVector<Vectorni> {
+public class Vectorni extends PrimitiveVector<Integer, Vectorni> implements IntVector<Vectorni> {
     public int[] v;
     private final int dim;
 

@@ -4,7 +4,7 @@ import org.liner.annotation.Final;
 import org.liner.annotation.PropertiesMethod;
 
 public abstract class SquareMatrix<E extends Number, V extends SquareMatrix<E, V>>
-        extends AbsMatrix<E, V, V> {
+        extends PrimitiveMatrix<E, V, V> {
     @Final
     public abstract double determinant();
 

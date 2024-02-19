@@ -11,7 +11,7 @@ import static java.lang.Math.*;
 
 // TODO: 2023/12/03 実装
 // FIXME: 2023/12/03 最適化
-public class Vectornf extends AbsVector<Float, Vectornf> implements FloatVector<Vectornf> {
+public class Vectornf extends PrimitiveVector<Float, Vectornf> implements FloatVector<Vectornf> {
     public float[] v;
     private final int dim;
 

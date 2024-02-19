@@ -7,7 +7,7 @@ import org.liner.annotation.PropertiesMethod;
 
 
 public abstract class VectorMatrix<E extends Number, V extends Vector<E, V> & Arithmetic<E, V> & VectorFunctions<E, V>>
-        extends AbsMatrix<E, VectorMatrix<E, V>, ColumnVector<E, V>>
+        extends PrimitiveMatrix<E, VectorMatrix<E, V>, ColumnVector<E, V>>
         implements VectorFunctions<E, V> {
     public abstract V toVector();
 

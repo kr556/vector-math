@@ -434,7 +434,7 @@ public class MatrixUtil {
     }
 
 
-    public static <E extends  Number,MAT extends AbsMatrix<E,MAT, MAT >, VEC extends AbsVector<E, VEC>> VEC transformation(MAT matrix, VEC vector) {
+    public static <E extends  Number,MAT extends PrimitiveMatrix<E,MAT, MAT >, VEC extends PrimitiveVector<E, VEC>> VEC transformation(MAT matrix, VEC vector) {
         if (matrix instanceof SquareMatrix<?,?>) {
             if (matrix.rowDimension() == vector.dimension()) {
                 MAT mTmp = matrix.craete();
@@ -453,7 +453,7 @@ public class MatrixUtil {
         throw new UnsupportedOperationException(" : The matrix is not square.");
     }
 
-    public static <E extends  Number,MAT extends AbsMatrix<E,MAT, MAT>, VEC extends AbsVector<E, VEC>> VEC transformation(MAT matrix, VEC vector, VEC pointer) {
+    public static <E extends  Number,MAT extends PrimitiveMatrix<E,MAT, MAT>, VEC extends PrimitiveVector<E, VEC>> VEC transformation(MAT matrix, VEC vector, VEC pointer) {
         if (matrix instanceof SquareMatrix<?,?>) {
             if (matrix.rowDimension() - 1 == vector.dimension()) {
                 MAT mTmp = (matrix).craete();

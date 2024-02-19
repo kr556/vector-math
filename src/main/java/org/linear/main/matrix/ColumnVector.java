@@ -11,7 +11,7 @@ import org.liner.annotation.PropertiesMethod;
  * @param <V> Type of vector converted from matrix.
  */
 public abstract class ColumnVector<E extends Number, V extends Vector<E, V> & Arithmetic<E, V> & VectorFunctions<E, V>>
-        extends AbsMatrix<E, ColumnVector<E, V>, VectorMatrix<E, V>>
+        extends PrimitiveMatrix<E, ColumnVector<E, V>, VectorMatrix<E, V>>
         implements VectorFunctions<E, V> {
     @PropertiesMethod
     @Override
