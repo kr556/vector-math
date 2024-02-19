@@ -7,7 +7,7 @@ import java.nio.LongBuffer;
 
 import static java.lang.Math.*;
 
-public class Vector3l extends AbsVector<Long, Vector3l> implements LongVector<Vector3l> {
+public class Vector3l extends PrimitiveVector<Long, Vector3l> implements LongVector<Vector3l> {
     public long x, y, z;
 
     public Vector3l() {}

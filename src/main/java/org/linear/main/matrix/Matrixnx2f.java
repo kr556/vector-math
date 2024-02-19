@@ -15,7 +15,7 @@ import static java.lang.System.arraycopy;
  * </pre>
  */
 @Deprecated //unfinished
-public class Matrixnx2f extends AbsMatrix<Float, Matrixnx2f, Matrix2xnf> implements FloatMatrix<Matrixnx2f, Matrix2xnf> {
+public class Matrixnx2f extends PrimitiveMatrix<Float, Matrixnx2f, Matrix2xnf> implements FloatMatrix<Matrixnx2f, Matrix2xnf> {
     public final float[] c0;
     public final float[] c1;
 

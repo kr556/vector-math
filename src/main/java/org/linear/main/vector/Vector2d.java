@@ -7,7 +7,7 @@ import java.nio.DoubleBuffer;
 
 import static java.lang.Math.*;
 
-public class Vector2d extends AbsVector<Double, Vector2d> implements DoubleVector<Vector2d> {
+public class Vector2d extends PrimitiveVector<Double, Vector2d> implements DoubleVector<Vector2d> {
     public static final Vector2d NAN = new Vector2d(Double.NaN, Double.NaN);
 
     public double x, y;

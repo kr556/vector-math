@@ -10,7 +10,7 @@ import static java.lang.System.arraycopy;
 
 // TODO: 2023/12/03 実装
 // FIXME: 2023/12/03 最適化
-public class Vectornd extends AbsVector<Double, Vectornd> implements DoubleVector<Vectornd> {
+public class Vectornd extends PrimitiveVector<Double, Vectornd> implements DoubleVector<Vectornd> {
     public static Vectornd nan(int dimension) {
         Vectornd re = new Vectornd(new double[dimension]);
         Arrays.fill(re.v, Double.NaN);

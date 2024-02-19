@@ -7,7 +7,7 @@ import java.nio.FloatBuffer;
 
 import static java.lang.Math.*;
 
-public class Vector3f extends AbsVector<Float, Vector3f> implements FloatVector<Vector3f> {
+public class Vector3f extends PrimitiveVector<Float, Vector3f> implements FloatVector<Vector3f> {
     public float x, y, z;
 
     private static final Vector3f NAN = new Vector3f(Float.NaN, Float.NaN, Float.NaN);

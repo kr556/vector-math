@@ -7,7 +7,7 @@ import java.nio.IntBuffer;
 
 import static java.lang.Math.*;
 
-public class Vector2i extends AbsVector<Integer, Vector2i> implements IntVector<Vector2i> {
+public class Vector2i extends PrimitiveVector<Integer, Vector2i> implements IntVector<Vector2i> {
     public int x, y;
 
     public Vector2i() {}

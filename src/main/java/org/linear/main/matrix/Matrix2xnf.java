@@ -12,7 +12,7 @@ import static java.lang.System.arraycopy;
  * </pre>
  */
 @Deprecated //unfinished
-public class Matrix2xnf extends AbsMatrix<Float, Matrix2xnf, Matrixnx2f>
+public class Matrix2xnf extends PrimitiveMatrix<Float, Matrix2xnf, Matrixnx2f>
         implements FloatMatrix<Matrix2xnf, Matrixnx2f> {
     public final float[] r0;
     public final float[] r1;

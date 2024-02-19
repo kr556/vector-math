@@ -8,6 +8,12 @@ import java.nio.Buffer;
 
 public non-sealed interface Linear<E extends Number, V extends Linear<E, V>>
         extends Array<E>, Cloneable {
+   /**
+    * Assignment this instance.
+    * @param copy right side.
+    */
+   void set(V copy);
+
    @Final
    Buffer get(Buffer pointer);
 

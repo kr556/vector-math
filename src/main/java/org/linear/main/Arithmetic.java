@@ -7,12 +7,6 @@ package org.linear.main;
  */
 public interface Arithmetic<E extends Number, V extends Arithmetic<E, V>> extends Cloneable {
     /**
-     * Assignment this instance.
-     * @param copy right side.
-     */
-    void set(V copy);
-
-    /**
      * Add elements of an argument to corresponding elements of myself. This method can calculation same size of elements.
      * If you want to do not rewrite myself, you can do calculation without rewrite myself going by use {@link Arithmetic#add(V,V)}.
      * @param value Term of right
