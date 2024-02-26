@@ -44,6 +44,11 @@ public abstract class FunctionVector<E extends Number, F extends FunctionValue, 
         public float[] toNewArray() {
             return toArray(new float[dimension()]);
         }
+
+        @Override
+        public final Class<?> getElementClass() {
+            return float.class;
+        }
     }
 
     public static abstract class DoubleFunctionVector<V extends DoubleFunctionVector<V, VAL>, VAL extends DoubleVector<VAL> & VectorFunctions<Double, VAL> & ArithmeticDouble<VAL>>
@@ -51,6 +56,11 @@ public abstract class FunctionVector<E extends Number, F extends FunctionValue, 
         @Override
         public double[] toNewArray() {
             return toArray(new double[dimension()]);
+        }
+
+        @Override
+        public final Class<?> getElementClass() {
+            return double.class;
         }
     }
 
@@ -60,6 +70,11 @@ public abstract class FunctionVector<E extends Number, F extends FunctionValue, 
         public int[] toNewArray() {
             return toArray(new int[dimension()]);
         }
+
+        @Override
+        public final Class<?> getElementClass() {
+            return int.class;
+        }
     }
 
     public static abstract class LongFunctionVector<V extends LongFunctionVector<V, VAL>, VAL extends LongVector<VAL> & VectorFunctions<Long, VAL> & ArithmeticLong<VAL>>
@@ -67,6 +82,11 @@ public abstract class FunctionVector<E extends Number, F extends FunctionValue, 
         @Override
         public long[] toNewArray() {
             return toArray(new long[dimension()]);
+        }
+
+        @Override
+        public final Class<?> getElementClass() {
+            return long.class;
         }
     }
 }

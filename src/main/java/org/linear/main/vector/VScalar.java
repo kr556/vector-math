@@ -124,4 +124,9 @@ public final class VScalar<E extends Number> extends AbsScalar<E> implements Vec
     public double doubleValue() {
         return x.doubleValue();
     }
+
+    @Override
+    public Class<?> getElementClass() {
+        return x.getClass();
+    }
 }

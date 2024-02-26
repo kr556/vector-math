@@ -139,4 +139,9 @@ public final class MScalar<E extends Number> extends Number implements Scalar<E>
     public double doubleValue() {
         return x.doubleValue();
     }
+
+    @Override
+    public Class<?> getElementClass() {
+        return x.getClass();
+    }
 }
