@@ -9,4 +9,9 @@ public interface DoubleVector<V extends DoubleVector<V>>
     default double[] toNewArray() {
         return toArray(new double[dimension()]);
     }
+
+    @Override
+    default Class<?> getElementClass() {
+        return double.class;
+    }
 }

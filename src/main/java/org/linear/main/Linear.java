@@ -30,4 +30,6 @@ public non-sealed interface Linear<E extends Number, V extends Linear<E, V>>
 
    @PropertiesMethod
    int elementsSize();
+
+   Class<?> getElementClass();
 }

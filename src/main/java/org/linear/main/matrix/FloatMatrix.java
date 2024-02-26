@@ -10,4 +10,9 @@ public interface FloatMatrix<V extends FloatMatrix<V, TRNS>, TRNS extends FloatM
     default float[] toNewArray() {
         return toArray(new float[elementsSize()]);
     }
+
+    @Override
+    default Class<?> getElementClass() {
+        return float.class;
+    }
 }

@@ -9,4 +9,9 @@ public interface FloatVector<V extends FloatVector<V>>
     default float[] toNewArray() {
         return toArray(new float[dimension()]);
     }
+
+    @Override
+    default Class<?> getElementClass() {
+        return float.class;
+    }
 }

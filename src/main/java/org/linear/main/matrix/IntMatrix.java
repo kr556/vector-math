@@ -10,4 +10,9 @@ public interface IntMatrix<V extends IntMatrix<V, TRNS>, TRNS extends IntMatrix<
     default int[] toNewArray() {
         return toArray(new int[elementsSize()]);
     }
+
+    @Override
+    default Class<?> getElementClass() {
+        return int.class;
+    }
 }

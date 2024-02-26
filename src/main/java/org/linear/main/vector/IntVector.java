@@ -9,4 +9,9 @@ public interface IntVector<V extends IntVector<V>>
     default int[] toNewArray() {
         return toArray(new int[dimension()]);
     }
+
+    @Override
+    default Class<?> getElementClass() {
+        return int.class;
+    }
 }

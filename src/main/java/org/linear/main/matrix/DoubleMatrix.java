@@ -10,4 +10,9 @@ public interface DoubleMatrix<V extends DoubleMatrix<V, TRNS>, TRNS extends Doub
     default double[] toNewArray() {
         return toArray(new double[elementsSize()]);
     }
+
+    @Override
+    default Class<?> getElementClass() {
+        return double.class;
+    }
 }

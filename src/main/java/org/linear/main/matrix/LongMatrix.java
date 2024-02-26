@@ -10,4 +10,9 @@ public interface LongMatrix<V extends LongMatrix<V, TRNS>, TRNS extends LongMatr
     default long[] toNewArray() {
         return toArray(new long[elementsSize()]);
     }
+
+    @Override
+    default Class<?> getElementClass() {
+        return long.class;
+    }
 }
