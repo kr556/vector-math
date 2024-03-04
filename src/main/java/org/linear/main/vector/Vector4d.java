@@ -305,4 +305,13 @@ public class Vector4d extends PrimitiveVector<Double, Vector4d> implements Doubl
         pointer[3] = this.w;
         return pointer;
     }
+
+    @Override
+    public double[] copy(int destPos, double[] pointer) {
+        pointer[destPos] = this.x;
+        pointer[1 + destPos] = this.y;
+        pointer[2 + destPos] = this.z;
+        pointer[3 + destPos] = this.w;
+        return pointer;
+    }
 }

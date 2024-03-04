@@ -6,6 +6,7 @@ import java.nio.Buffer;
 import java.nio.LongBuffer;
 
 import static java.lang.Math.*;
+import static java.lang.System.arraycopy;
 
 public class Vector4l extends PrimitiveVector<Long, Vector4l> implements LongVector<Vector4l> {
     public long x, y, z, w;
@@ -301,6 +302,15 @@ public class Vector4l extends PrimitiveVector<Long, Vector4l> implements LongVec
         pointer[1] = this.y;
         pointer[2] = this.z;
         pointer[3] = this.w;
+        return pointer;
+    }
+
+    @Override
+    public long[] copy(int destPos, long[] pointer) {
+        pointer[destPos] = this.x;
+        pointer[1 + destPos] = this.y;
+        pointer[2 + destPos] = this.z;
+        pointer[3 + destPos] = this.w;
         return pointer;
     }
 }

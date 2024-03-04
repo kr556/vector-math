@@ -291,4 +291,13 @@ public class Vector4i extends PrimitiveVector<Integer, Vector4i> implements IntV
         pointer[3] = this.w;
         return pointer;
     }
+
+    @Override
+    public int[] copy(int destPos, int[] pointer) {
+        pointer[destPos] = this.x;
+        pointer[1 + destPos] = this.y;
+        pointer[2 + destPos] = this.z;
+        pointer[3 + destPos] = this.w;
+        return pointer;
+    }
 }

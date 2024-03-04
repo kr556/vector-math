@@ -357,8 +357,17 @@ public class Matrix2d extends SquareMatrix<Double, Matrix2d>
     public double[] toArray(double[] pointer) {
         pointer[0] = this.m00;
         pointer[1] = this.m01;
-        pointer[4] = this.m10;
-        pointer[5] = this.m11;
+        pointer[2] = this.m10;
+        pointer[3] = this.m11;
+        return pointer;
+    }
+
+    @Override
+    public double[] copy(int destPos, double[] pointer) {
+        pointer[destPos] = this.m00;
+        pointer[1 + destPos] = this.m01;
+        pointer[2 + destPos] = this.m10;
+        pointer[3 + destPos] = this.m11;
         return pointer;
     }
 }

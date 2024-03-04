@@ -293,4 +293,13 @@ public class Vector4f extends PrimitiveVector<Float, Vector4f> implements FloatV
         pointer[3] = this.w;
         return pointer;
     }
+
+    @Override
+    public float[] copy(int destPos, float[] pointer) {
+        pointer[destPos] = this.x;
+        pointer[1 + destPos] = this.y;
+        pointer[2 + destPos] = this.z;
+        pointer[3 + destPos] = this.w;
+        return pointer;
+    }
 }

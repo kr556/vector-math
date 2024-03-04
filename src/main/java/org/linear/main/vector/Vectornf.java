@@ -8,9 +8,8 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static java.lang.Math.*;
+import static java.lang.System.arraycopy;
 
-// TODO: 2023/12/03 実装
-// FIXME: 2023/12/03 最適化
 public class Vectornf extends PrimitiveVector<Float, Vectornf> implements FloatVector<Vectornf> {
     public float[] v;
     private final int dim;
@@ -324,6 +323,12 @@ public class Vectornf extends PrimitiveVector<Float, Vectornf> implements FloatV
         for (int i = 0; i < dim; i++) {
             pointer[i] = v[i];
         }
+        return pointer;
+    }
+
+    @Override
+    public float[] copy(int destPos, float[] pointer) {
+        arraycopy(v, 0, pointer, destPos, dim);
         return pointer;
     }
 }

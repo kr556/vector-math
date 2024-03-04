@@ -456,6 +456,20 @@ public class Matrix3d extends SquareMatrix<Double, Matrix3d>
     }
 
     @Override
+    public double[] copy(int destPos, double[] pointer) {
+        pointer[destPos] = this.m00;
+        pointer[1 + destPos] = this.m01;
+        pointer[2 + destPos] = this.m02;
+        pointer[3 + destPos] = this.m10;
+        pointer[4 + destPos] = this.m11;
+        pointer[5 + destPos] = this.m12;
+        pointer[6 + destPos] = this.m20;
+        pointer[7 + destPos] = this.m21;
+        pointer[8 + destPos] = this.m22;
+        return pointer;
+    }
+
+    @Override
     public Matrix3d cofactor() {
         set(
                 m11 * m22 - m12 * m21, m02 * m21 - m01 * m22, m01 * m12 - m02 * m11,

@@ -436,6 +436,27 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
         return pointer;
     }
 
+    @Override
+    public double[] copy(int destPos, double[] pointer) {
+        pointer[destPos] = this.m00;
+        pointer[1 + destPos] = this.m01;
+        pointer[2 + destPos] = this.m02;
+        pointer[3 + destPos] = this.m03;
+        pointer[4 + destPos] = this.m10;
+        pointer[5 + destPos] = this.m11;
+        pointer[6 + destPos] = this.m12;
+        pointer[7 + destPos] = this.m13;
+        pointer[8 + destPos] = this.m20;
+        pointer[9 + destPos] = this.m21;
+        pointer[10 + destPos] = this.m22;
+        pointer[11 + destPos] = this.m23;
+        pointer[12 + destPos] = this.m30;
+        pointer[13 + destPos] = this.m31;
+        pointer[14 + destPos] = this.m32;
+        pointer[15 + destPos] = this.m33;
+        return pointer;
+    }
+
     @Final
     @Override
     public final void set(int r, int c, Double value) {

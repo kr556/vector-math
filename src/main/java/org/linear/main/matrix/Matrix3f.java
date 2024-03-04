@@ -483,6 +483,20 @@ public class Matrix3f extends SquareMatrix<Float, Matrix3f>
         return pointer;
     }
 
+    @Override
+    public float[] copy(int destPos, float[] pointer) {
+        pointer[destPos] = this.m00;
+        pointer[1 + destPos] = this.m01;
+        pointer[2 + destPos] = this.m02;
+        pointer[3 + destPos] = this.m10;
+        pointer[4 + destPos] = this.m11;
+        pointer[5 + destPos] = this.m12;
+        pointer[6 + destPos] = this.m20;
+        pointer[7 + destPos] = this.m21;
+        pointer[8 + destPos] = this.m22;
+        return pointer;
+    }
+
     public final Matrix3f translate(float x, float y) {
         m02 += x;
         m12 += y;

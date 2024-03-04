@@ -189,6 +189,15 @@ public class Vector4Funcf extends FunctionVector.FloatFunctionVector<Vector4Func
     }
 
     @Override
+    public float[] copy(int destPos, float[] pointer) {
+        pointer[destPos] = this.x.val();
+        pointer[1 + destPos] = this.y.val();
+        pointer[2 + destPos] = this.z.val();
+        pointer[3 + destPos] = this.w.val();
+        return pointer;
+    }
+
+    @Override
     public Vector4f createPrimitive() {
         return new Vector4f(x.val(), y.val(), z.val(), w.val());
     }

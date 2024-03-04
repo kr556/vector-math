@@ -155,6 +155,13 @@ public class Vector2Funcd extends FunctionVector.DoubleFunctionVector<Vector2Fun
     }
 
     @Override
+    public double[] copy(int destPos, double[] pointer) {
+        pointer[destPos] = this.x.val();
+        pointer[1 + destPos] = this.y.val();
+        return pointer;
+    }
+
+    @Override
     public Vector2d createPrimitive() {
         return new Vector2d(x.val(), y.val());
     }

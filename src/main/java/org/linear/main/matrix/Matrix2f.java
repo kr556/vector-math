@@ -324,4 +324,13 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
         pointer[3] = this.m11;
         return pointer;
     }
+
+    @Override
+    public float[] copy(int destPos, float[] pointer) {
+        pointer[destPos] = this.m00;
+        pointer[1 + destPos] = this.m01;
+        pointer[2 + destPos] = this.m10;
+        pointer[3 + destPos] = this.m11;
+        return pointer;
+    }
 }

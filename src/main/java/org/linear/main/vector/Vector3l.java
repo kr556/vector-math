@@ -289,4 +289,12 @@ public class Vector3l extends PrimitiveVector<Long, Vector3l> implements LongVec
         pointer[2] = this.z;
         return pointer;
     }
+
+    @Override
+    public long[] copy(int destPos, long[] pointer) {
+        pointer[destPos] = this.x;
+        pointer[1 + destPos] = this.y;
+        pointer[2 + destPos] = this.z;
+        return pointer;
+    }
 }

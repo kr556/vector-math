@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static java.lang.Math.*;
+import static java.lang.System.*;
 
 // TODO: 2023/12/03 実装
 // FIXME: 2023/12/03 最適化
@@ -22,7 +23,7 @@ public class Vectornl extends PrimitiveVector<Long, Vectornl> implements LongVec
     public Vectornl(Long... v) {
         this.v = new long[v.length];
 
-        System.arraycopy(v, 0, this.v, 0, v.length);
+        arraycopy(v, 0, this.v, 0, v.length);
 
         this.dim = v.length;
     }
@@ -30,7 +31,7 @@ public class Vectornl extends PrimitiveVector<Long, Vectornl> implements LongVec
     public Vectornl(long... v) {
         this.v = new long[v.length];
 
-        System.arraycopy(v, 0, this.v, 0, v.length);
+        arraycopy(v, 0, this.v, 0, v.length);
 
         this.dim = v.length;
     }
@@ -337,6 +338,12 @@ public class Vectornl extends PrimitiveVector<Long, Vectornl> implements LongVec
         for (int i = 0; i < dim; i++) {
             pointer[i] = v[i];
         }
+        return pointer;
+    }
+
+    @Override
+    public long[] copy(int destPos, long[] pointer) {
+        arraycopy(v, 0, pointer, destPos, dim);
         return pointer;
     }
 }

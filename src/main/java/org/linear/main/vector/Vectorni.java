@@ -8,9 +8,8 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static java.lang.Math.*;
+import static java.lang.System.arraycopy;
 
-// TODO: 2023/12/03 実装
-// FIXME: 2023/12/03 最適化
 public class Vectorni extends PrimitiveVector<Integer, Vectorni> implements IntVector<Vectorni> {
     public int[] v;
     private final int dim;
@@ -330,6 +329,12 @@ public class Vectorni extends PrimitiveVector<Integer, Vectorni> implements IntV
         for (int i = 0; i < dim; i++) {
             pointer[i] = v[i];
         }
+        return pointer;
+    }
+
+    @Override
+    public int[] copy(int destPos, int[] pointer) {
+        arraycopy(v, 0, pointer, destPos, dim);
         return pointer;
     }
 }

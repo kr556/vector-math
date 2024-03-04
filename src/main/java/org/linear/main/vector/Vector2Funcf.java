@@ -159,6 +159,13 @@ public class Vector2Funcf extends FunctionVector.FloatFunctionVector<Vector2Func
     }
 
     @Override
+    public float[] copy(int destPos, float[] pointer) {
+        pointer[destPos] = this.x.val();
+        pointer[1 + destPos] = this.y.val();
+        return pointer;
+    }
+
+    @Override
     public Vector2f createPrimitive() {
         return new Vector2f(x.val(), y.val());
     }

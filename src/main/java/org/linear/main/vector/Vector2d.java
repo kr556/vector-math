@@ -264,4 +264,11 @@ public class Vector2d extends PrimitiveVector<Double, Vector2d> implements Doubl
     public double[] toArray(double[] pointer) {
         return new double[0];
     }
+
+    @Override
+    public double[] copy(int destPos, double[] pointer) {
+        pointer[destPos] = this.x;
+        pointer[1 + destPos] = this.y;
+        return pointer;
+    }
 }

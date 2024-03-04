@@ -171,6 +171,14 @@ public class Vector3Funcl extends FunctionVector.LongFunctionVector<Vector3Funcl
     }
 
     @Override
+    public long[] copy(int destPos, long[] pointer) {
+        pointer[destPos] = this.x.val();
+        pointer[1 + destPos] = this.y.val();
+        pointer[2 + destPos] = this.z.val();
+        return pointer;
+    }
+
+    @Override
     public Vector3l createPrimitive() {
         return new Vector3l(x.val(), y.val(), z.val());
     }

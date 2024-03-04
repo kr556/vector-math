@@ -187,6 +187,15 @@ public class Vector4Funcl extends FunctionVector.LongFunctionVector<Vector4Funcl
     }
 
     @Override
+    public long[] copy(int destPos, long[] pointer) {
+        pointer[destPos] = this.x.val();
+        pointer[1 + destPos] = this.y.val();
+        pointer[2 + destPos] = this.z.val();
+        pointer[3 + destPos] = this.w.val();
+        return pointer;
+    }
+
+    @Override
     public Vector4l createPrimitive() {
         return new Vector4l(x.val(), y.val(), z.val(), w.val());
     }

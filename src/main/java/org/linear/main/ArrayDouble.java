@@ -8,4 +8,6 @@ public non-sealed interface ArrayDouble extends Array<Double> {
 
     @Final
     double[] toArray(double[] pointer);
+
+    double[] copy(int destPos, double[] pointer);
 }

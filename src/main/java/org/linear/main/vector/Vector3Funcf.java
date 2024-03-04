@@ -173,6 +173,14 @@ public class Vector3Funcf extends FunctionVector.FloatFunctionVector<Vector3Func
     }
 
     @Override
+    public float[] copy(int destPos, float[] pointer) {
+        pointer[destPos] = this.x.val();
+        pointer[1 + destPos] = this.y.val();
+        pointer[2 + destPos] = this.z.val();
+        return pointer;
+    }
+
+    @Override
     public Vector3f createPrimitive() {
         return new Vector3f(x.val(), y.val(), z.val());
     }

@@ -8,8 +8,6 @@ import java.util.stream.IntStream;
 import static java.lang.Math.*;
 import static java.lang.System.arraycopy;
 
-// TODO: 2023/12/03 実装
-// FIXME: 2023/12/03 最適化
 public class Vectornd extends PrimitiveVector<Double, Vectornd> implements DoubleVector<Vectornd> {
     public static Vectornd nan(int dimension) {
         Vectornd re = new Vectornd(new double[dimension]);
@@ -387,6 +385,12 @@ public class Vectornd extends PrimitiveVector<Double, Vectornd> implements Doubl
         for (int i = 0; i < dim; i++) {
             pointer[i] = v[i];
         }
+        return pointer;
+    }
+
+    @Override
+    public double[] copy(int destPos, double[] pointer) {
+        arraycopy(v, 0, pointer, destPos, dim);
         return pointer;
     }
 }

@@ -189,6 +189,15 @@ public class Vector4Funcd extends FunctionVector.DoubleFunctionVector<Vector4Fun
     }
 
     @Override
+    public double[] copy(int destPos, double[] pointer) {
+        pointer[destPos] = this.x.val();
+        pointer[1 + destPos] = this.y.val();
+        pointer[2 + destPos] = this.z.val();
+        pointer[3 + destPos] = this.w.val();
+        return pointer;
+    }
+
+    @Override
     public Vector4d createPrimitive() {
         return new Vector4d(x.val(), y.val(), z.val(), w.val());
     }

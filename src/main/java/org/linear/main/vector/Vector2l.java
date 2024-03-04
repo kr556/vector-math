@@ -261,4 +261,11 @@ public class Vector2l extends PrimitiveVector<Long, Vector2l> implements LongVec
         pointer[1] = this.y;
         return pointer;
     }
+
+    @Override
+    public long[] copy(int destPos, long[] pointer) {
+        pointer[destPos] = this.x;
+        pointer[1 + destPos] = this.y;
+        return pointer;
+    }
 }

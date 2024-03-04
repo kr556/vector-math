@@ -291,4 +291,9 @@ public class Vector3d extends PrimitiveVector<Double, Vector3d> implements Doubl
         pointer[2] = this.z;
         return pointer;
     }
+
+    @Override
+    public double[] copy(int destPos, double[] pointer) {
+        return new double[0];
+    }
 }

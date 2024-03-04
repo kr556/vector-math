@@ -187,6 +187,15 @@ public class Vector4Funci extends FunctionVector.IntFunctionVector<Vector4Funci,
     }
 
     @Override
+    public int[] copy(int destPos, int[] pointer) {
+        pointer[destPos] = this.x.val();
+        pointer[1 + destPos] = this.y.val();
+        pointer[2 + destPos] = this.z.val();
+        pointer[3 + destPos] = this.w.val();
+        return pointer;
+    }
+
+    @Override
     public Vector4i createPrimitive() {
         return new Vector4i(x.val(), y.val(), z.val(), w.val());
     }

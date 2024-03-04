@@ -173,6 +173,14 @@ public class Vector3Funcd extends FunctionVector.DoubleFunctionVector<Vector3Fun
     }
 
     @Override
+    public double[] copy(int destPos, double[] pointer) {
+        pointer[destPos] = this.x.val();
+        pointer[1 + destPos] = this.y.val();
+        pointer[2 + destPos] = this.z.val();
+        return pointer;
+    }
+
+    @Override
     public Vector3d createPrimitive() {
         return new Vector3d(x.val(), y.val(), z.val());
     }
