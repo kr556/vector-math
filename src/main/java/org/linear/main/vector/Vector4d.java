@@ -10,7 +10,7 @@ import static java.lang.Math.*;
 public class Vector4d extends PrimitiveVector<Double, Vector4d> implements DoubleVector<Vector4d> {
     public double x, y, z, w;
 
-    private static final Vector4d NAN = new Vector4d(Double.NaN);
+    public static final Vector4d NAN = new Vector4d(Double.NaN);
 
     public Vector4d() {}
 
