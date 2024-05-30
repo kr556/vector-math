@@ -1,8 +1,11 @@
 package org.linear.main.vector;
 
+import org.jetbrains.annotations.NotNull;
+import org.linear.main.Throws;
+
 import static java.lang.Math.*;
 
-public final class VectorUtils {
+public final class VectorUtils extends Throws {
     private VectorUtils() {}
 
     public static Vector2f create2f(float len, double angle) {
@@ -425,7 +428,8 @@ public final class VectorUtils {
         return asVec(elements, elements.length);
     }
 
-    private static Vector<?, ?> asVec(Number[] all, int len) {
+    private static Vector<?, ?> asVec(@NotNull Number[] all, int len) {
+        if (all.length == 0) throwArrEmpty();
         if (len == 1) new VScalar<>(all[0]);
         if (all[0] instanceof Float) {
             return switch (len) {
@@ -480,8 +484,52 @@ public final class VectorUtils {
                 }
             };
         } else {
-            throw new IllegalStateException("Unexpected value: ");
+            throw new IllegalArgumentException(": unsuport type.");
         }
+    }
+
+    public static Vector<Float, ?> asVector(float[] arr) {
+        if (arr.length == 0) throwArrEmpty();
+        return switch (arr.length) {
+            case 1 -> new VScalar<>(arr[0]);
+            case 2 -> new Vector2f(arr[0], arr[1]);
+            case 3 -> new Vector3f(arr[0], arr[1], arr[2]);
+            case 4 -> new Vector4f(arr[0], arr[1], arr[2], arr[3]);
+            default -> new Vectornf(arr);
+        };
+    }
+
+    public static Vector<Integer, ?> asVector(int[] arr) {
+        if (arr.length == 0) throwArrEmpty();
+        return switch (arr.length) {
+            case 1 -> new VScalar<>(arr[0]);
+            case 2 -> new Vector2i(arr[0], arr[1]);
+            case 3 -> new Vector3i(arr[0], arr[1], arr[2]);
+            case 4 -> new Vector4i(arr[0], arr[1], arr[2], arr[3]);
+            default -> new Vectorni(arr);
+        };
+    }
+
+    public static Vector<Double, ?> asVector(double[] arr) {
+        if (arr.length == 0) throwArrEmpty();
+        return switch (arr.length) {
+            case 1 -> new VScalar<>(arr[0]);
+            case 2 -> new Vector2d(arr[0], arr[1]);
+            case 3 -> new Vector3d(arr[0], arr[1], arr[2]);
+            case 4 -> new Vector4d(arr[0], arr[1], arr[2], arr[3]);
+            default -> new Vectornd(arr);
+        };
+    }
+
+    public static Vector<Long, ?> asVector(long[] arr) {
+        if (arr.length == 0) throwArrEmpty();
+        return switch (arr.length) {
+            case 1 -> new VScalar<>(arr[0]);
+            case 2 -> new Vector2l(arr[0], arr[1]);
+            case 3 -> new Vector3l(arr[0], arr[1], arr[2]);
+            case 4 -> new Vector4l(arr[0], arr[1], arr[2], arr[3]);
+            default -> new Vectornl(arr);
+        };
     }
 
     public static boolean equalsDimensional(Vector<?, ?> v1, Vector<?, ?> v2) {

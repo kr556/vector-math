@@ -69,7 +69,7 @@ public final class VScalar<E extends Number> extends AbsScalar<E> implements Vec
     // TODO: 2023/11/24
     @Override
     public boolean isNaN() {
-        return false;
+        return Double.valueOf(x.doubleValue()).isNaN();
     }
 
     @Override

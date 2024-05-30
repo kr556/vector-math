@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import org.liner.annotation.Final;
 import org.liner.annotation.PropertiesMethod;
 
-// TODO: 2023/12/09
 public class Matrix2d extends SquareMatrix<Double, Matrix2d>
         implements DoubleMatrix<Matrix2d, Matrix2d> {
     public final static Matrix2d NAN = new Matrix2d(

@@ -10,8 +10,6 @@ import java.util.stream.IntStream;
 import static java.lang.Math.*;
 import static java.lang.System.*;
 
-// TODO: 2023/12/03 実装
-// FIXME: 2023/12/03 最適化
 public class Vectornl extends PrimitiveVector<Long, Vectornl> implements LongVector<Vectornl> {
     public long[] v;
     private final int dim;

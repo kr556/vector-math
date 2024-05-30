@@ -1,6 +1,5 @@
 package org.linear.main;
 
-// TODO: 2023/11/23 mul, divの引数をdoubleに
 public interface ArithmeticGeneric<E extends Number, V extends ArithmeticGeneric<E, V>> extends Arithmetic<E, V> {
     V add(E value);
     V add(E value, V pointer);

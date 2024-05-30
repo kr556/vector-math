@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import org.liner.annotation.Final;
 import org.liner.annotation.PropertiesMethod;
 
-// TODO: 2023/12/09
 public class Matrix2f extends SquareMatrix<Float, Matrix2f>
         implements FloatMatrix<Matrix2f, Matrix2f> {
     public final static Matrix2f NAN = new Matrix2f(

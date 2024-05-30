@@ -9,7 +9,6 @@ import org.liner.annotation.PropertiesMethod;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 
-// TODO: 2023/12/09
 public class Matrix3f extends SquareMatrix<Float, Matrix3f>
         implements FloatMatrix<Matrix3f, Matrix3f> {
     public final static Matrix3f NAN = new Matrix3f(
