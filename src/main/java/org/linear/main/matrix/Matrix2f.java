@@ -1,8 +1,13 @@
 package org.linear.main.matrix;
 
 import org.jetbrains.annotations.NotNull;
+import org.linear.main.vector.Vector2f;
+import org.linear.main.vector.Vector3f;
 import org.liner.annotation.Final;
 import org.liner.annotation.PropertiesMethod;
+
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
 
 public class Matrix2f extends SquareMatrix<Float, Matrix2f>
         implements FloatMatrix<Matrix2f, Matrix2f> {
@@ -331,5 +336,162 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
         pointer[2 + destPos] = this.m10;
         pointer[3 + destPos] = this.m11;
         return pointer;
+    }
+
+    public final Matrix2f rotate90() {
+        float tmp = m00;
+        m00 = m01;
+        m01 = -tmp;
+
+        tmp = m10;
+        m10 = m11;
+        m11 = -tmp;
+        return this;
+    }
+
+    public final Matrix2f rotate180() {
+        m00 = -m00;
+        m11 = -m11;
+        return this;
+    }
+
+    public final Matrix2f rotate270() {
+        float tmp = m00;
+        m00 = -m01;
+        m01 = tmp;
+
+        tmp = m10;
+        m10 = -m11;
+        m11 = tmp;
+        return this;
+    }
+
+    public final Matrix2f rotate(double z) {
+        return null;
+    }
+
+    public final Matrix2f setRotate90() {
+        set(
+                0, -1,
+                1, 0
+        );
+        return this;
+    }
+
+    public final Matrix2f setRotate180() {
+        set(
+                -1, 0,
+                0, -1
+        );
+        return this;
+    }
+
+    public final Matrix2f setRotate270() {
+        set(
+                0, 1,
+                -1, 0
+        );
+        return this;
+    }
+
+    public final Matrix2f setRotate(double z) {
+        final float s = (float) sin(z);
+        final float c = (float) cos(z);
+
+        set(
+                c, -s,
+                s, c
+        );
+        return this;
+    }
+
+    public final Matrix2f scale(float x, float y) {
+        m00 *= x;
+        m11 *= y;
+        return this;
+    }
+
+    public final Matrix2f scale(Vector2f scales) {
+        m00 *= scales.x;
+        m11 *= scales.y;
+        return this;
+    }
+
+    public final Matrix2f scale(float scale) {
+        m00 *= scale;
+        m11 *= scale;
+        return this;
+    }
+
+    public final Matrix2f scaleX(float scale) {
+        m00 *= scale;
+        return this;
+    }
+
+    public final Matrix2f scaleY(float scale) {
+        m11 *= scale;
+        return this;
+    }
+
+    public final Matrix2f setScale(float x, float y) {
+        set(
+                x, 0,
+                0, y
+        );
+        return this;
+    }
+
+    public final Matrix2f setScale(Vector3f scales) {
+        return setScale(scales.x, scales.y);
+    }
+
+    public final Matrix2f setScale(float s) {
+        set(
+                s, 0,
+                0, s
+        );
+        return this;
+    }
+
+    public final Matrix2f setScaleX(float s) {
+        set(
+                s, 0,
+                0, 1
+        );
+        return this;
+    }
+
+    public final Matrix2f setScaleY(float s) {
+        set(
+                1, 0,
+                0, s
+        );
+        return this;
+    }
+
+    public final Matrix2f shear(float x, float y) {
+        set(
+                m01 + m00 * x,
+                m01 * y + m00,
+                m11 + m10 * x,
+                m11 * y + m10
+        );
+        return this;
+    }
+
+    public final Matrix2f shear(Vector2f shears) {
+        return shear(shears.x, shears.y);
+    }
+
+    public final Matrix2f setShear(float x, float y) {
+        set(
+                1, x,
+                y, 1
+        );
+        return this;
+    }
+
+    public final Matrix2f setShear(Vector2f shears) {
+        return setShear(shears.x, shears.y);
     }
 }
