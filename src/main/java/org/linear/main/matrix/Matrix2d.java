@@ -1,8 +1,13 @@
 package org.linear.main.matrix;
 
 import org.jetbrains.annotations.NotNull;
+import org.linear.main.vector.Vector2f;
+import org.linear.main.vector.Vector3f;
 import org.liner.annotation.Final;
 import org.liner.annotation.PropertiesMethod;
+
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
 
 public class Matrix2d extends SquareMatrix<Double, Matrix2d>
         implements DoubleMatrix<Matrix2d, Matrix2d> {
@@ -368,5 +373,162 @@ public class Matrix2d extends SquareMatrix<Double, Matrix2d>
         pointer[2 + destPos] = this.m10;
         pointer[3 + destPos] = this.m11;
         return pointer;
+    }
+
+    public final Matrix2d rotate90() {
+        double tmp = m00;
+        m00 = m01;
+        m01 = -tmp;
+
+        tmp = m10;
+        m10 = m11;
+        m11 = -tmp;
+        return this;
+    }
+
+    public final Matrix2d rotate180() {
+        m00 = -m00;
+        m11 = -m11;
+        return this;
+    }
+
+    public final Matrix2d rotate270() {
+        double tmp = m00;
+        m00 = -m01;
+        m01 = tmp;
+
+        tmp = m10;
+        m10 = -m11;
+        m11 = tmp;
+        return this;
+    }
+
+    public final Matrix2d rotate(double z) {
+        return null;
+    }
+
+    public final Matrix2d setRotate90() {
+        set(
+                0, -1,
+                1, 0
+        );
+        return this;
+    }
+
+    public final Matrix2d setRotate180() {
+        set(
+                -1, 0,
+                0, -1
+        );
+        return this;
+    }
+
+    public final Matrix2d setRotate270() {
+        set(
+                0, 1,
+                -1, 0
+        );
+        return this;
+    }
+
+    public final Matrix2d setRotate(double z) {
+        final double s = sin(z);
+        final double c = cos(z);
+
+        set(
+                c, -s,
+                s, c
+        );
+        return this;
+    }
+
+    public final Matrix2d scale(double x, double y) {
+        m00 *= x;
+        m11 *= y;
+        return this;
+    }
+
+    public final Matrix2d scale(Vector2f scales) {
+        m00 *= scales.x;
+        m11 *= scales.y;
+        return this;
+    }
+
+    public final Matrix2d scale(double scale) {
+        m00 *= scale;
+        m11 *= scale;
+        return this;
+    }
+
+    public final Matrix2d scaleX(double scale) {
+        m00 *= scale;
+        return this;
+    }
+
+    public final Matrix2d scaleY(double scale) {
+        m11 *= scale;
+        return this;
+    }
+
+    public final Matrix2d setScale(double x, double y) {
+        set(
+                x, 0,
+                0, y
+        );
+        return this;
+    }
+
+    public final Matrix2d setScale(Vector3f scales) {
+        return setScale(scales.x, scales.y);
+    }
+
+    public final Matrix2d setScale(double s) {
+        set(
+                s, 0,
+                0, s
+        );
+        return this;
+    }
+
+    public final Matrix2d setScaleX(double s) {
+        set(
+                s, 0,
+                0, 1
+        );
+        return this;
+    }
+
+    public final Matrix2d setScaleY(double s) {
+        set(
+                1, 0,
+                0, s
+        );
+        return this;
+    }
+
+    public final Matrix2d shear(double x, double y) {
+        set(
+                m01 + m00 * x,
+                m01 * y + m00,
+                m11 + m10 * x,
+                m11 * y + m10
+        );
+        return this;
+    }
+
+    public final Matrix2d shear(Vector2f shears) {
+        return shear(shears.x, shears.y);
+    }
+
+    public final Matrix2d setShear(double x, double y) {
+        set(
+                1, x,
+                y, 1
+        );
+        return this;
+    }
+
+    public final Matrix2d setShear(Vector2f shears) {
+        return setShear(shears.x, shears.y);
     }
 }

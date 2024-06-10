@@ -2,8 +2,8 @@ package org.linear.main.matrix;
 
 import org.linear.main.vector.*;
 
-public class MatrixUtil {
-    protected MatrixUtil() {}
+public class MatrixUtils {
+    protected MatrixUtils() {}
 
     public static double det2(double m00, double m01,
                               double m10, double m11) {

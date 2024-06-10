@@ -1,16 +1,12 @@
-import org.linear.main.ArrayFloat;
 import org.linear.main.matrix.*;
-import org.linear.main.vector.FloatVector;
-import org.linear.main.vector.Vector4f;
-import org.linear.main.vector.VectorUtils;
-
-import java.nio.DoubleBuffer;
-import java.nio.FloatBuffer;
-import java.util.Arrays;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
+import org.linear.main.vector.*;
 
 public class TestMain {
     public static void main(String[] args) {
+        Vector2d v = new Vector2d(1, 1);
+        Matrix2d m = new Matrix2d(Matrix2d.DIAGONAL)
+                .shear(0., 0.5);
+
+        System.out.println(MatrixUtils.transformation(m, v));
     }
 }
