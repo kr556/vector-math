@@ -7,6 +7,7 @@ import org.liner.annotation.PropertiesMethod;
 import org.linear.main.Linear;
 
 import java.nio.Buffer;
+import java.nio.FloatBuffer;
 import java.util.Arrays;
 
 /**
@@ -74,16 +75,6 @@ public interface Matrix<E extends Number, V extends Matrix<E, V, TRNS>, TRNS ext
         }
 
         return pointer;
-    }
-
-    @Final
-    @Override
-    default Buffer get(Buffer pointer) {
-        E[] es = toArray();
-
-        // TODO
-//        System.out.println(Arrays.toString(es));
-        return null;
     }
 
     @Override

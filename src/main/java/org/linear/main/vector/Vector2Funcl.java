@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.linear.main.value.LongValue;
 
 import java.nio.Buffer;
+import java.nio.FloatBuffer;
 import java.nio.LongBuffer;
 
 public class Vector2Funcl extends FunctionVector.LongFunctionVector<Vector2Funcl, Vector2l> {
@@ -107,10 +108,11 @@ public class Vector2Funcl extends FunctionVector.LongFunctionVector<Vector2Funcl
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
-        ((LongBuffer) pointer).put(0, this.x.val());
-        ((LongBuffer) pointer).put(1, this.y.val());
-        return pointer;
+    public FloatBuffer get(int offset, Buffer pointer) {
+        FloatBuffer bf = (FloatBuffer) pointer;
+        bf.put(offset    , this.x.val());
+        bf.put(offset + 1, this.y.val());
+        return bf;
     }
 
     @Override

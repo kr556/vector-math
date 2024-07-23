@@ -5,6 +5,7 @@ import org.linear.main.value.FloatValue;
 
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
+import java.nio.LongBuffer;
 
 public class Vector3Funcf extends FunctionVector.FloatFunctionVector<Vector3Funcf, Vector3f> {
     public static Vector3Funcf NAN = new Vector3Funcf(() -> Float.NaN);
@@ -122,12 +123,12 @@ public class Vector3Funcf extends FunctionVector.FloatFunctionVector<Vector3Func
     }
 
     @Override
-    public FloatBuffer get(Buffer pointer) {
-        FloatBuffer re = (FloatBuffer) pointer;
-        re.put(0, this.x.val());
-        re.put(1, this.y.val());
-        re.put(2, this.z.val());
-        return re;
+    public FloatBuffer get(int offset, Buffer pointer) {
+        FloatBuffer bf = (FloatBuffer) pointer;
+        bf.put(offset    , this.x.val());
+        bf.put(offset + 1, this.y.val());
+        bf.put(offset + 2, this.z.val());
+        return bf;
     }
 
     @Override

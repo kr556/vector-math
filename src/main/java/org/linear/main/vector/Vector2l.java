@@ -130,11 +130,11 @@ public class Vector2l extends PrimitiveVector<Long, Vector2l> implements LongVec
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
-        LongBuffer t = (LongBuffer) pointer;
-        t.put(0, x);
-        t.put(1, y);
-        return pointer;
+    public LongBuffer get(int offset, Buffer pointer) {
+        LongBuffer bf = (LongBuffer) pointer;
+        bf.put(offset    , this.x);
+        bf.put(offset + 1, this.y);
+        return bf;
     }
 
     @Override

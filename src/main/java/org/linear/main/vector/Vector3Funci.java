@@ -5,6 +5,7 @@ import org.linear.main.value.IntValue;
 
 import java.nio.Buffer;
 import java.nio.IntBuffer;
+import java.nio.LongBuffer;
 
 public class Vector3Funci extends FunctionVector.IntFunctionVector<Vector3Funci, Vector3i> {
     public IntValue x, y, z;
@@ -120,12 +121,12 @@ public class Vector3Funci extends FunctionVector.IntFunctionVector<Vector3Funci,
     }
 
     @Override
-    public IntBuffer get(Buffer pointer) {
-        IntBuffer re = (IntBuffer) pointer;
-        re.put(0, this.x.val());
-        re.put(1, this.y.val());
-        re.put(2, this.z.val());
-        return re;
+    public IntBuffer get(int offset, Buffer pointer) {
+        IntBuffer bf = (IntBuffer) pointer;
+        bf.put(offset    , this.x.val());
+        bf.put(offset + 1, this.y.val());
+        bf.put(offset + 2, this.z.val());
+        return bf;
     }
 
     @Override

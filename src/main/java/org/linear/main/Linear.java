@@ -14,8 +14,11 @@ public non-sealed interface Linear<E extends Number, V extends Linear<E, V>>
     */
    void set(V copy);
 
-   @Final
-   Buffer get(Buffer pointer);
+   default Buffer get(Buffer pointer) {
+      return get(0, pointer);
+   }
+
+   Buffer get(int offset, Buffer pointer);
 
    @Final
    void set(int index, E value);

@@ -3,6 +3,7 @@ package org.linear.main.vector;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.Buffer;
+import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 
 import static java.lang.Math.*;
@@ -212,11 +213,12 @@ public class Vector3i extends PrimitiveVector<Integer, Vector3i> implements IntV
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
-        ((LongBuffer) pointer).put(0, this.x);
-        ((LongBuffer) pointer).put(1, this.y);
-        ((LongBuffer) pointer).put(2, this.z);
-        return pointer;
+    public IntBuffer get(int offset, Buffer pointer) {
+        IntBuffer bf = (IntBuffer) pointer;
+        bf.put(offset    , this.x);
+        bf.put(offset + 1, this.y);
+        bf.put(offset + 2, this.z);
+        return bf;
     }
 
     @Override

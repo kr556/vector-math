@@ -1,12 +1,15 @@
 package org.linear.main.vector;
 
 import org.jetbrains.annotations.NotNull;
-import org.linear.main.Throws;
 
 import static java.lang.Math.*;
 
-public final class VectorUtils extends Throws {
+public final class VectorUtils {
     private VectorUtils() {}
+
+    private static IllegalArgumentException arrayEmptyE() {
+        return new IllegalArgumentException("array is empty");
+    }
 
     public static Vector2f create2f(float len, double angle) {
         return new Vector2f(
@@ -429,7 +432,7 @@ public final class VectorUtils extends Throws {
     }
 
     private static Vector<?, ?> asVec(@NotNull Number[] all, int len) {
-        if (all.length == 0) throwArrEmpty();
+        if (all.length == 0) arrayEmptyE();
         if (len == 1) new VScalar<>(all[0]);
         if (all[0] instanceof Float) {
             return switch (len) {
@@ -489,7 +492,7 @@ public final class VectorUtils extends Throws {
     }
 
     public static Vector<Float, ?> asVector(float[] arr) {
-        if (arr.length == 0) throwArrEmpty();
+        if (arr.length == 0) throw arrayEmptyE();
         return switch (arr.length) {
             case 1 -> new VScalar<>(arr[0]);
             case 2 -> new Vector2f(arr[0], arr[1]);
@@ -500,7 +503,7 @@ public final class VectorUtils extends Throws {
     }
 
     public static Vector<Integer, ?> asVector(int[] arr) {
-        if (arr.length == 0) throwArrEmpty();
+        if (arr.length == 0) throw arrayEmptyE();
         return switch (arr.length) {
             case 1 -> new VScalar<>(arr[0]);
             case 2 -> new Vector2i(arr[0], arr[1]);
@@ -511,7 +514,7 @@ public final class VectorUtils extends Throws {
     }
 
     public static Vector<Double, ?> asVector(double[] arr) {
-        if (arr.length == 0) throwArrEmpty();
+        if (arr.length == 0) throw arrayEmptyE();
         return switch (arr.length) {
             case 1 -> new VScalar<>(arr[0]);
             case 2 -> new Vector2d(arr[0], arr[1]);
@@ -522,7 +525,7 @@ public final class VectorUtils extends Throws {
     }
 
     public static Vector<Long, ?> asVector(long[] arr) {
-        if (arr.length == 0) throwArrEmpty();
+        if (arr.length == 0) throw arrayEmptyE();
         return switch (arr.length) {
             case 1 -> new VScalar<>(arr[0]);
             case 2 -> new Vector2l(arr[0], arr[1]);

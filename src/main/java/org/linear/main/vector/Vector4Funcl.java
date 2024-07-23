@@ -130,12 +130,12 @@ public class Vector4Funcl extends FunctionVector.LongFunctionVector<Vector4Funcl
     }
 
     @Override
-    public LongBuffer get(Buffer pointer) {
+    public LongBuffer get(int offset, Buffer pointer) {
         LongBuffer re = (LongBuffer) pointer;
-        re.put(0, this.x.val());
-        re.put(1, this.y.val());
-        re.put(2, this.z.val());
-        re.put(3, this.w.val());
+        re.put(offset    , this.x.val());
+        re.put(offset + 1, this.y.val());
+        re.put(offset + 2, this.z.val());
+        re.put(offset + 3, this.w.val());
         return re;
     }
 

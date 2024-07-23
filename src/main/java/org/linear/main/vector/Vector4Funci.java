@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.linear.main.value.IntValue;
 
 import java.nio.Buffer;
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 public class Vector4Funci extends FunctionVector.IntFunctionVector<Vector4Funci, Vector4i> {
@@ -130,13 +131,13 @@ public class Vector4Funci extends FunctionVector.IntFunctionVector<Vector4Funci,
     }
 
     @Override
-    public IntBuffer get(Buffer pointer) {
-        IntBuffer re = (IntBuffer) pointer;
-        re.put(0, this.x.val());
-        re.put(1, this.y.val());
-        re.put(2, this.z.val());
-        re.put(3, this.w.val());
-        return re;
+    public IntBuffer get(int offset, Buffer pointer) {
+        IntBuffer bf = (IntBuffer) pointer;
+        bf.put(offset    , this.x.val());
+        bf.put(offset + 1, this.y.val());
+        bf.put(offset + 2, this.z.val());
+        bf.put(offset + 3, this.w.val());
+        return bf;
     }
 
     @Override

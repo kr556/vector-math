@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.nio.Buffer;
 import java.nio.DoubleBuffer;
+import java.nio.IntBuffer;
+import java.nio.LongBuffer;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -276,11 +278,12 @@ public class Vectornl extends PrimitiveVector<Long, Vectornl> implements LongVec
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
+    public LongBuffer get(int offset, Buffer pointer) {
+        LongBuffer bf = (LongBuffer) pointer;
         for (int i = 0; i < dimension(); i++) {
-            ((DoubleBuffer) pointer).put(i, v[i]);
+            bf.put(i + offset, v[i]);
         }
-        return pointer;
+        return bf;
     }
 
     @Override

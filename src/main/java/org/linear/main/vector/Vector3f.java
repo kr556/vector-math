@@ -3,6 +3,7 @@ package org.linear.main.vector;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.Buffer;
+import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 
 import static java.lang.Math.*;
@@ -215,12 +216,12 @@ public class Vector3f extends PrimitiveVector<Float, Vector3f> implements FloatV
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
-        FloatBuffer t = (FloatBuffer) pointer;
-        t.put(0, this.x);
-        t.put(1, this.y);
-        t.put(2, this.z);
-        return pointer;
+    public FloatBuffer get(int offset, Buffer pointer) {
+        FloatBuffer bf = (FloatBuffer) pointer;
+        bf.put(offset    , this.x);
+        bf.put(offset + 1, this.y);
+        bf.put(offset + 2, this.z);
+        return bf;
     }
 
     @Override

@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.nio.Buffer;
 import java.nio.DoubleBuffer;
+import java.nio.FloatBuffer;
 
 import static java.lang.Math.*;
 
@@ -236,12 +237,13 @@ public class Vector4d extends PrimitiveVector<Double, Vector4d> implements Doubl
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
-        ((DoubleBuffer) pointer).put(0, this.x);
-        ((DoubleBuffer) pointer).put(1, this.y);
-        ((DoubleBuffer) pointer).put(2, this.z);
-        ((DoubleBuffer) pointer).put(3, this.w);
-        return pointer;
+    public DoubleBuffer get(int offset, Buffer pointer) {
+        DoubleBuffer bf = (DoubleBuffer) pointer;
+        bf.put(offset    , this.x);
+        bf.put(offset + 1, this.y);
+        bf.put(offset + 2, this.z);
+        bf.put(offset + 3, this.w);
+        return bf;
     }
 
     @Override

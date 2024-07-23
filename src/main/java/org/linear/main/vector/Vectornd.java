@@ -2,6 +2,7 @@ package org.linear.main.vector;
 
 import java.nio.Buffer;
 import java.nio.DoubleBuffer;
+import java.nio.IntBuffer;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -313,14 +314,12 @@ public class Vectornd extends PrimitiveVector<Double, Vectornd> implements Doubl
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
-        if (dim != pointer.limit()) throw new ArrayIndexOutOfBoundsException();
-
+    public DoubleBuffer get(int offset, Buffer pointer) {
+        DoubleBuffer bf = (DoubleBuffer) pointer;
         for (int i = 0; i < dimension(); i++) {
-            ((DoubleBuffer) pointer).put(i, v[i]);
+            bf.put(i + offset, v[i]);
         }
-
-        return pointer;
+        return bf;
     }
 
     @Override

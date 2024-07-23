@@ -8,6 +8,10 @@ import org.linear.main.vector.Vector4f;
 import org.liner.annotation.Final;
 import org.liner.annotation.PropertiesMethod;
 
+import java.nio.Buffer;
+import java.nio.DoubleBuffer;
+import java.nio.FloatBuffer;
+
 import static java.lang.Math.*;
 
 public class Matrix4d extends SquareMatrix<Double, Matrix4d>
@@ -62,6 +66,28 @@ public class Matrix4d extends SquareMatrix<Double, Matrix4d>
         this.m10 = copy.m10; this.m11 = copy.m11; this.m12 = copy.m12; this.m13 = copy.m13;
         this.m20 = copy.m20; this.m21 = copy.m21; this.m22 = copy.m22; this.m23 = copy.m23;
         this.m30 = copy.m30; this.m31 = copy.m31; this.m32 = copy.m32; this.m33 = copy.m33;
+    }
+
+    @Override
+    public DoubleBuffer get(int offset, Buffer pointer) {
+        DoubleBuffer bf = (DoubleBuffer) pointer;
+        bf.put(offset     , m00);
+        bf.put(offset + 1 , m01);
+        bf.put(offset + 2 , m02);
+        bf.put(offset + 3 , m03);
+        bf.put(offset + 4 , m10);
+        bf.put(offset + 5 , m11);
+        bf.put(offset + 6 , m12);
+        bf.put(offset + 7 , m13);
+        bf.put(offset + 8 , m20);
+        bf.put(offset + 9 , m21);
+        bf.put(offset + 10, m22);
+        bf.put(offset + 11, m23);
+        bf.put(offset + 12, m30);
+        bf.put(offset + 13, m31);
+        bf.put(offset + 14, m32);
+        bf.put(offset + 15, m33);
+        return bf;
     }
 
     @Override

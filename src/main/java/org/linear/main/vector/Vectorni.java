@@ -268,11 +268,12 @@ public class Vectorni extends PrimitiveVector<Integer, Vectorni> implements IntV
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
+    public IntBuffer get(int offset, Buffer pointer) {
+        IntBuffer bf = (IntBuffer) pointer;
         for (int i = 0; i < dimension(); i++) {
-            ((IntBuffer) pointer).put(i, v[i]);
+            bf.put(i + offset, v[i]);
         }
-        return pointer;
+        return bf;
     }
 
     @Override

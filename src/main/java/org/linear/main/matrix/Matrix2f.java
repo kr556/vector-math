@@ -6,6 +6,9 @@ import org.linear.main.vector.Vector3f;
 import org.liner.annotation.Final;
 import org.liner.annotation.PropertiesMethod;
 
+import java.nio.Buffer;
+import java.nio.FloatBuffer;
+
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 
@@ -50,6 +53,16 @@ public class Matrix2f extends SquareMatrix<Float, Matrix2f>
     public void set(Matrix2f copy) {
         this.m00 = copy.m00; this.m01 = copy.m01;
         this.m10 = copy.m10; this.m11 = copy.m11;
+    }
+
+    @Override
+    public FloatBuffer get(int offset, Buffer pointer) {
+        FloatBuffer bf = (FloatBuffer) pointer;
+        bf.put(offset    , m00);
+        bf.put(offset + 1, m01);
+        bf.put(offset + 2, m10);
+        bf.put(offset + 3, m11);
+        return bf;
     }
 
     @Override

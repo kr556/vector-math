@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
+import java.nio.LongBuffer;
 
 import static java.lang.Math.cos;
 import static java.lang.Math.sqrt;
@@ -197,10 +198,11 @@ public class Vector2f extends PrimitiveVector<Float, Vector2f> implements FloatV
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
-        ((FloatBuffer) pointer).put(0, this.x);
-        ((FloatBuffer) pointer).put(1, this.y);
-        return pointer;
+    public FloatBuffer get(int offset, Buffer pointer) {
+        FloatBuffer bf = (FloatBuffer) pointer;
+        bf.put(offset    , this.x);
+        bf.put(offset + 1, this.y);
+        return bf;
     }
 
     @Override

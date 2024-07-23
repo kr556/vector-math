@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -261,11 +262,12 @@ public class Vectornf extends PrimitiveVector<Float, Vectornf> implements FloatV
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
+    public FloatBuffer get(int offset, Buffer pointer) {
+        FloatBuffer bf = (FloatBuffer) pointer;
         for (int i = 0; i < dimension(); i++) {
-            ((FloatBuffer) pointer).put(i, v[i]);
+            bf.put(i + offset, v[i]);
         }
-        return pointer;
+        return bf;
     }
 
     @Override

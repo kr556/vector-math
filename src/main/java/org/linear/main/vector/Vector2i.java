@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.nio.Buffer;
 import java.nio.IntBuffer;
+import java.nio.LongBuffer;
 
 import static java.lang.Math.*;
 
@@ -106,11 +107,11 @@ public class Vector2i extends PrimitiveVector<Integer, Vector2i> implements IntV
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
-        IntBuffer t = (IntBuffer) pointer;
-        t.put(0, x);
-        t.put(1, y);
-        return pointer;
+    public IntBuffer get(int offset, Buffer pointer) {
+        IntBuffer bf = (IntBuffer) pointer;
+        bf.put(offset    , this.x);
+        bf.put(offset + 1, this.y);
+        return bf;
     }
 
     @Override

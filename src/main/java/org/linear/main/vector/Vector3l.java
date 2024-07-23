@@ -3,6 +3,7 @@ package org.linear.main.vector;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.Buffer;
+import java.nio.FloatBuffer;
 import java.nio.LongBuffer;
 
 import static java.lang.Math.*;
@@ -225,12 +226,12 @@ public class Vector3l extends PrimitiveVector<Long, Vector3l> implements LongVec
     }
 
     @Override
-    public Buffer get(Buffer pointer) {
-        LongBuffer t = (LongBuffer) pointer;
-        t.put(0, this.x);
-        t.put(1, this.y);
-        t.put(2, this.z);
-        return pointer;
+    public LongBuffer get(int offset, Buffer pointer) {
+        LongBuffer bf = (LongBuffer) pointer;
+        bf.put(offset    , this.x);
+        bf.put(offset + 1, this.y);
+        bf.put(offset + 2, this.z);
+        return bf;
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.linear.main.value.DoubleValue;
 
 import java.nio.Buffer;
 import java.nio.DoubleBuffer;
+import java.nio.LongBuffer;
 
 public class Vector3Funcd extends FunctionVector.DoubleFunctionVector<Vector3Funcd, Vector3d> {
     public static Vector3Funcd NAN = new Vector3Funcd(() -> Double.NaN);
@@ -122,12 +123,12 @@ public class Vector3Funcd extends FunctionVector.DoubleFunctionVector<Vector3Fun
     }
 
     @Override
-    public DoubleBuffer get(Buffer pointer) {
-        DoubleBuffer re = (DoubleBuffer) pointer;
-        re.put(0, this.x.val());
-        re.put(1, this.y.val());
-        re.put(2, this.z.val());
-        return re;
+    public DoubleBuffer get(int offset, Buffer pointer) {
+        DoubleBuffer bf = (DoubleBuffer) pointer;
+        bf.put(offset    , this.x.val());
+        bf.put(offset + 1, this.y.val());
+        bf.put(offset + 2, this.z.val());
+        return bf;
     }
 
     @Override
