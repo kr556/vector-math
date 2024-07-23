@@ -1,4 +1,3 @@
-import org.linear.main.matrix.*;
 import org.linear.main.vector.*;
 
 import java.nio.DoubleBuffer;
