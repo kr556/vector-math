@@ -36,6 +36,11 @@ public class Vectornl extends PrimitiveVector<Long, Vectornl> implements LongVec
         this.dim = v.length;
     }
 
+    public Vectornl() {
+        this.v = new long[0];
+        this.dim = 0;
+    }
+
     public Vectornl(int dimensional) {
         this.v = new long[dimensional];
         this.dim = this.v.length;

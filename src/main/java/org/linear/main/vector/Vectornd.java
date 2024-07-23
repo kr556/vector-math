@@ -41,6 +41,11 @@ public class Vectornd extends PrimitiveVector<Double, Vectornd> implements Doubl
         this.dim = this.v.length;
     }
 
+    public Vectornd() {
+        this.v = new double[0];
+        this.dim = 0;
+    }
+
     public Vectornd(int dimensional) {
         this.v = new double[dimensional];
         this.dim = this.v.length;

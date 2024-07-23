@@ -32,6 +32,11 @@ public class Vectorni extends PrimitiveVector<Integer, Vectorni> implements IntV
         this.dim = this.v.length;
     }
 
+    public Vectorni() {
+        this.v = new int[0];
+        this.dim = 0;
+    }
+
     public Vectorni(int dimensional) {
         this.v = new int[dimensional];
         this.dim = this.v.length;

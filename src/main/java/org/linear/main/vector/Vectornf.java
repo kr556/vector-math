@@ -34,6 +34,11 @@ public class Vectornf extends PrimitiveVector<Float, Vectornf> implements FloatV
         this.dim = this.v.length;
     }
 
+    public Vectornf() {
+        this.v = new float[0];
+        this.dim = 0;
+    }
+
     public Vectornf(int dimensional) {
         this.v = new float[dimensional];
         this.dim = this.v.length;

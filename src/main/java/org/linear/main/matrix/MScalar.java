@@ -5,6 +5,7 @@ import org.liner.annotation.Final;
 import org.liner.annotation.PropertiesMethod;
 import org.linear.main.Scalar;
 
+import java.nio.*;
 import java.util.Objects;
 
 public final class MScalar<E extends Number> extends Number implements Scalar<E>, Matrix<E, MScalar<E>, MScalar<E>> {
@@ -41,6 +42,15 @@ public final class MScalar<E extends Number> extends Number implements Scalar<E>
     @Override
     public void set(MScalar<E> copy) {
         this.x = copy.x;
+    }
+
+    @Override
+    public Buffer get(int offset, Buffer pointer) {
+        if (x.getClass() == Float.class)        ((FloatBuffer) pointer).put(offset, x.floatValue());
+        else if (x.getClass() == Double.class)  ((DoubleBuffer) pointer).put(offset, x.doubleValue());
+        else if (x.getClass() == Integer.class) ((IntBuffer) pointer).put(offset, x.intValue());
+        else if (x.getClass() == Long.class)    ((LongBuffer) pointer).put(offset, x.longValue());
+        return pointer;
     }
 
     @PropertiesMethod

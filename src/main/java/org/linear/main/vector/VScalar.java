@@ -40,6 +40,15 @@ public final class VScalar<E extends Number> extends AbsScalar<E> implements Vec
     }
 
     @Override
+    public Buffer get(int offset, Buffer pointer) {
+        if (x.getClass() == Float.class)        ((FloatBuffer) pointer).put(offset, x.floatValue());
+        else if (x.getClass() == Double.class)  ((DoubleBuffer) pointer).put(offset, x.doubleValue());
+        else if (x.getClass() == Integer.class) ((IntBuffer) pointer).put(offset, x.intValue());
+        else if (x.getClass() == Long.class)    ((LongBuffer) pointer).put(offset, x.longValue());
+        return pointer;
+    }
+
+    @Override
     public E[] toArray(E[] pointer) {
         pointer[0] = x;
         return pointer;

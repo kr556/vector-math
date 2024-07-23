@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="linear-math-vanilla-3.1.0-rc">
+    <output-path>$PROJECT_DIR$/out/artifacts/linear_math_vanilla_3_1_0_rc</output-path>
+    <root id="archive" name="linear-math-vanilla-3.1.0-rc.jar">
+      <element id="module-output" name="vector-math.main" />
+    </root>
+  </artifact>
+</component>
