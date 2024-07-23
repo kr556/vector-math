@@ -1,7 +1,6 @@
 package org.linear.main.vector;
 
 import org.jetbrains.annotations.NotNull;
-import org.linear.main.matrix.MScalar;
 import org.liner.annotation.PropertiesMethod;
 import org.linear.main.AbsScalar;
 import org.linear.main.Scalar;

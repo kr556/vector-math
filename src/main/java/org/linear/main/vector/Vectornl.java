@@ -3,8 +3,6 @@ package org.linear.main.vector;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.Buffer;
-import java.nio.DoubleBuffer;
-import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.util.Arrays;
 import java.util.stream.IntStream;

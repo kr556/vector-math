@@ -2,7 +2,6 @@ package org.linear.main.vector;
 
 import java.nio.Buffer;
 import java.nio.DoubleBuffer;
-import java.nio.IntBuffer;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
